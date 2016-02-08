@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">See Me Train</string>
+    <string name="app_name">SeeMeTrain</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_video_capture">VideoCapture</string>
 </resources>
