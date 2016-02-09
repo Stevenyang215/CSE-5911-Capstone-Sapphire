@@ -1,6 +1,5 @@
 package sapphire.seemetrain;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,7 +12,8 @@ import android.net.Uri;
 import android.widget.Button;
 import android.widget.VideoView;
 
-public class VideoCapture extends Activity {
+
+public class video_capture extends AppCompatActivity {
 
     static final int REQUEST_VIDEO_CAPTURE = 1;
 
@@ -21,13 +21,12 @@ public class VideoCapture extends Activity {
     private Button play_button;
     private VideoView videoView;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_capture);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -37,7 +36,7 @@ public class VideoCapture extends Activity {
                         .setAction("Action", null).show();
             }
         });
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         record_button = (Button) findViewById(R.id.record_button);
         play_button = (Button) findViewById(R.id.play_button);
@@ -46,19 +45,21 @@ public class VideoCapture extends Activity {
         record_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    Intent captureVideo = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    if(captureVideo.resolveActivity(getPackageManager())!=null){
-                        startActivityForResult(captureVideo,REQUEST_VIDEO_CAPTURE);
-                    }
+                Intent captureVideo = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if(captureVideo.resolveActivity(getPackageManager())!=null){
+                    startActivityForResult(captureVideo,REQUEST_VIDEO_CAPTURE);
+                }
             }
         });
 
         play_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               videoView.start();
+                videoView.start();
             }
         });
+
+
 
     }
 
@@ -71,10 +72,9 @@ public class VideoCapture extends Activity {
 
 
 
-
-
-
-
-
-
 }
+
+
+
+
+
