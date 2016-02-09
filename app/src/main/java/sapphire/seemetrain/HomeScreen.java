@@ -9,10 +9,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
+//TODO Need unit test cases
 
 public class HomeScreen extends Activity {
 
     private Button record_button;
+    //TODO Create standard button format/look
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -28,7 +30,7 @@ public class HomeScreen extends Activity {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        }); //TODO Button should send to next activity
         
     }
 
