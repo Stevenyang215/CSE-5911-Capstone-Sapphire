@@ -2,9 +2,9 @@ package sapphire.seemetrain;
 
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.os.Bundle;
+import android.view.View;
 
 /**
  * Created by zijiangyang on 2/15/16.

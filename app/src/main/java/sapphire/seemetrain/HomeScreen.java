@@ -29,13 +29,7 @@ public class HomeScreen extends Activity {
         new_schedule = (Button) findViewById(R.id.new_schedule);
 
 
-        record_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        }); //TODO Button should send to next activity
+
         
     }
 
