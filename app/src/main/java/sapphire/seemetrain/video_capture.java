@@ -40,7 +40,7 @@ public class video_capture extends AppCompatActivity {
 
         record_button = (Button) findViewById(R.id.record_button);
         play_button = (Button) findViewById(R.id.play_button);
-        videoView = (VideoView) findViewById(R.id.videoView); //TODO add video view
+        videoView = (VideoView) findViewById(R.id.videoView);
 
         record_button.setOnClickListener(new View.OnClickListener() {
             @Override
