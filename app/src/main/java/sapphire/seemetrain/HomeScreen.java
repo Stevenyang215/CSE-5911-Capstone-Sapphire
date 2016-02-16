@@ -8,12 +8,14 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.content.Intent;
 
 //TODO Need unit test cases
 
 public class HomeScreen extends Activity {
 
     private Button record_button;
+    private Button new_schedule;
     //TODO Create standard button format/look
 
     @Override
@@ -24,14 +26,21 @@ public class HomeScreen extends Activity {
         //setSupportActionBar(toolbar);
 
         record_button = (Button) findViewById(R.id.record_button);
-        record_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        }); //TODO Button should send to next activity
+        new_schedule = (Button) findViewById(R.id.new_schedule);
+
+
+
         
+    }
+
+    public void record_video(View view){
+        Intent intent = new Intent(this,video_capture.class);
+        startActivity(intent);
+    }
+
+    public void new_schedule_set_up(View view){
+        Intent intent = new Intent(this,NewScheduleActivity.class);
+        startActivity(intent);
     }
 
 
