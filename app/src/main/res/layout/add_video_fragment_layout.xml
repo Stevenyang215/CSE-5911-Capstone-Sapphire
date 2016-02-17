@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:weightSum="1">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -9,20 +10,50 @@
         android:layout_height="wrap_content"
         android:weightSum="1">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Choose your video"
-            android:id="@+id/textView2"
-            android:layout_weight="0.75"
-            android:layout_marginLeft="15dp" />
-
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Choose a video"
             android:id="@+id/video_select" />
+
+        <VideoView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/videoView2" />
     </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select the time to play the video"
+        android:id="@+id/textView3"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.03"
+        android:layout_marginTop="10dp" />
+
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView">
+
+        <TimePicker
+            android:layout_width="325dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/timePicker"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp" />
+    </ScrollView>
+
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SAVE"
+        android:id="@+id/save_time"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:onClick="time_save" />
 
 </LinearLayout>
