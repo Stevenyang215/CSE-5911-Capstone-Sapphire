@@ -10,7 +10,11 @@ import android.content.Intent;
 import android.provider.MediaStore;
 import android.net.Uri;
 import android.widget.Button;
+import android.widget.Toast;
 import android.widget.VideoView;
+
+import java.io.File;
+import java.util.Calendar;
 
 
 public class video_capture extends AppCompatActivity {
@@ -19,6 +23,11 @@ public class video_capture extends AppCompatActivity {
 
     private Button record_button;
     private Button play_button;
+    //TODO Add stop/pause buttons to layout
+    private Button stop_button;
+    private Button pause_button;
+
+    private Button save_button;
     private VideoView videoView;
 
     @Override
@@ -40,12 +49,26 @@ public class video_capture extends AppCompatActivity {
 
         record_button = (Button) findViewById(R.id.record_button);
         play_button = (Button) findViewById(R.id.play_button);
+        //stop_button = (Button) findViewById(R.id.stop_button);
+        //pause_button = (Button) findViewById(R.id.pause_button);
+
+        save_button = (Button) findViewById(R.id.save_button);
         videoView = (VideoView) findViewById(R.id.videoView);
 
         record_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent captureVideo = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+                //Create a unique file name
+                String path_name = generateVideoName();
+                File mediaFile = new File(getFilesDir() + path_name);
+
+                Intent captureVideo = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+
+                //Save Video to unique file path
+                Uri videoUri = Uri.fromFile(mediaFile);
+                captureVideo.putExtra(MediaStore.EXTRA_OUTPUT, videoUri);
+
                 if(captureVideo.resolveActivity(getPackageManager())!=null){
                     startActivityForResult(captureVideo,REQUEST_VIDEO_CAPTURE);
                 }
@@ -59,15 +82,56 @@ public class video_capture extends AppCompatActivity {
             }
         });
 
+//        stop_button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                videoView.stopPlayback();
+//            }
+//        });
+//
+//        pause_button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //Check canPause() ?
+//                videoView.pause();
+//            }
+//        });
 
+        save_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         if(requestCode == REQUEST_VIDEO_CAPTURE && resultCode == RESULT_OK){
-            Uri video = data.getData();
-            videoView.setVideoURI(video);
+            if (resultCode == RESULT_OK) {
+                Toast.makeText(this, "Video saved to:\n" +
+                        data.getData(), Toast.LENGTH_LONG).show();
+            } else if (resultCode == RESULT_CANCELED) {
+                Toast.makeText(this, "Video recording cancelled.",
+                        Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(this, "Failed to record video",
+                        Toast.LENGTH_LONG).show();
+            }
         }
+    }
+
+    private String generateVideoName(){
+
+        //Use current time as a unique file name
+        Calendar right_now = Calendar.getInstance();
+        String vid_name = right_now.toString();
+        vid_name = "/" + vid_name + "_SeeMeTrain";
+
+//        Toast.makeText(this, "Video named " + vid_name,
+//                Toast.LENGTH_LONG).show();
+
+        return vid_name;
     }
 
 

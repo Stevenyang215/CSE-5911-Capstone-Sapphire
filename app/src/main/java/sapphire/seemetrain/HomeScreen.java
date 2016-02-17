@@ -16,6 +16,7 @@ public class HomeScreen extends Activity {
 
     private Button record_button;
     private Button new_schedule;
+    private Button play_button;
     //TODO Create standard button format/look
 
     @Override
@@ -41,6 +42,12 @@ public class HomeScreen extends Activity {
     public void new_schedule_set_up(View view){
         Intent intent = new Intent(this,NewScheduleActivity.class);
         startActivity(intent);
+    }
+
+    public void play_video(View view){
+        //Do nothing for now
+        //Intent intent = new Intent(this,video_repository.class); //TODO add video repo layout
+        //startActivity(intent);
     }
 
 
