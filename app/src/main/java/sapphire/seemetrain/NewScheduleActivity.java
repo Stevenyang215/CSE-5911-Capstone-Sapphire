@@ -25,13 +25,12 @@ public class NewScheduleActivity extends AppCompatActivity {
 
     }
 
-    private void add_video(){
+    public void addVideo(View view) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         addVideoFragment add_Video_Fragment = new addVideoFragment();
-        fragmentTransaction.replace(R.id.fragment_container,add_Video_Fragment);
+        fragmentTransaction.replace(R.id.fragment_container, add_Video_Fragment);
         fragmentTransaction.commit();
-
 
     }
 

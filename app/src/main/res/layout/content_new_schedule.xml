@@ -44,6 +44,6 @@
         android:layout_below="@+id/textView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:onClick="add_video" />
+        android:onClick="addVideo" />
 
 </RelativeLayout>
