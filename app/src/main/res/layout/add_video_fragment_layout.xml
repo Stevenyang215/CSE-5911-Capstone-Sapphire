@@ -14,12 +14,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Choose a video"
-            android:id="@+id/video_select" />
+            android:id="@+id/video_select"
+            android:onClick="selectVideo"/>
 
-        <VideoView
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/videoView2" />
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/video_path"
+            android:layout_weight="0.92"
+            android:textAlignment="center" />
+
     </LinearLayout>
 
     <TextView
