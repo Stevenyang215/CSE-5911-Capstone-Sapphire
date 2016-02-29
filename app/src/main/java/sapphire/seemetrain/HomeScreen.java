@@ -1,6 +1,7 @@
 package sapphire.seemetrain;
 
 import android.app.Activity;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -45,9 +46,11 @@ public class HomeScreen extends Activity {
     }
 
     public void play_video(View view){
-        //Do nothing for now
-        //Intent intent = new Intent(this,video_repository.class); //TODO add video repo layout
-        //startActivity(intent);
+        final SMTApplication global = (SMTApplication) getApplication();
+        Uri uri = global.getPath();
+        Intent intent = new Intent(this,PlayPicked.class);
+        intent.setData(uri);
+        startActivity(intent);
     }
 
     public void begin_alarm(View v){

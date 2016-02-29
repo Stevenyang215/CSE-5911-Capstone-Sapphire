@@ -52,7 +52,21 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="sapphire.seemetrain.HomeScreen" />
         </activity>
-        <activity android:name=".AlarmPlay" />
+        <activity
+            android:name=".PlayPicked"
+            android:label="PlayPicked"
+            android:parentActivityName=".HomeScreen"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="sapphire.seemetrain.HomeScreen" />
+        </activity>
+        <activity android:name=".AlarmPlay"
+            android:theme="@style/AppTheme.NoActionBar">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="sapphire.seemetrain.HomeScreen" />
+        </activity>
         <receiver android:name=".AlarmVideoReceiver" />
         <service
             android:name=".AlarmVideoService"

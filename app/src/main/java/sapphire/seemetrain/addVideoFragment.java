@@ -138,7 +138,7 @@ public class addVideoFragment extends Fragment {
         global.setCount(0);
 
         Context context = getContext();
-        Toast.makeText(context, "Save Success." + global.getHour(), Toast.LENGTH_LONG).show();
+        Toast.makeText(context, "Save Success.", Toast.LENGTH_LONG).show();
 
 //        Context context = getContext();
 //        Toast.makeText(context, "Interval \n" + interval, Toast.LENGTH_LONG).show();
