@@ -13,6 +13,16 @@
         android:background="@color/colorButton"
         android:onClick="arming_alarm"/>
 
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:id="@+id/cancel_button"
+        android:layout_below="@+id/begin_button"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorButton"
+        android:onClick="cancel_alarm"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

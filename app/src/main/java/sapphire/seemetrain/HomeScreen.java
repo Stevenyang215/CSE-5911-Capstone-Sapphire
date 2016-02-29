@@ -51,7 +51,7 @@ public class HomeScreen extends Activity {
     }
 
     public void begin_alarm(View v){
-        Intent intent = new Intent(this,AlarmStart.class);
+        Intent intent = new Intent(this, AlarmStart.class);
         startActivity(intent);
     }
 

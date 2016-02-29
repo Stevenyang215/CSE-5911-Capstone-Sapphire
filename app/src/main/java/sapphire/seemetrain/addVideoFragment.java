@@ -94,13 +94,13 @@ public class addVideoFragment extends Fragment {
     public void onActivityResult(int requestCode,int resultCode, Intent data){
 
         Context context = getContext();
+        final SMTApplication global = (SMTApplication) getActivity().getApplication();
         if(resultCode == Activity.RESULT_OK) {
             //Toast.makeText(context, "2", Toast.LENGTH_LONG).show();
             if (requestCode == SELECT_VIDEO) {
                 //Toast.makeText(context, "3", Toast.LENGTH_LONG).show();
+                global.setPath(data.getData());
                 selectedVideoPath = getPath(data.getData());
-//                final SMTApplication global = (SMTApplication) getActivity().getApplication();
-//                global.setPathName(selectedVideoPath); TODO save to global variable in SMTApplication
 
                 try {
                         if (selectedVideoPath == null) {
@@ -124,9 +124,21 @@ public class addVideoFragment extends Fragment {
     private void saveSchedule(View v) {
 
         int time_hour = timePicker.getCurrentHour();
-        int time_minute = timePicker.getCurrentMinute();
+        int time_minute = timePicker.getCurrentMinute(); //TODO fix single digit minute error
         time = Integer.toString(time_hour);
         time = time + Integer.toString(time_minute);
+
+
+
+        final SMTApplication global = (SMTApplication) getActivity().getApplication();
+//        global.setPath(data.getData);
+        global.setInterval(interval);
+        global.setHour(time_hour);
+        global.setMinute(time_minute);
+        global.setCount(0);
+
+        Context context = getContext();
+        Toast.makeText(context, "Save Success." + global.getHour(), Toast.LENGTH_LONG).show();
 
 //        Context context = getContext();
 //        Toast.makeText(context, "Interval \n" + interval, Toast.LENGTH_LONG).show();
