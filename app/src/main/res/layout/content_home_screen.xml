@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorButton"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="250dp"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:onClick="record_video" />
 
@@ -30,5 +30,14 @@
         android:background="@color/colorButton"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:onClick="play_video" />
+
+    <Button
+        android:id="@+id/begin_button"
+        android:text="Begin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorButton"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:onClick="begin_alarm" />
 
 </LinearLayout>

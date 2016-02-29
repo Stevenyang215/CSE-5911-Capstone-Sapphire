@@ -1,15 +1,28 @@
 package sapphire.seemetrain;
 
 import android.content.Context;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Button;
 import android.widget.Toast;
+import android.content.Intent;
+import android.app.Activity;
+import android.net.Uri;
+import android.util.Log;
+import android.database.Cursor;
+import android.content.Context;
 
+import org.w3c.dom.Text;
+
+import java.io.IOException;
 import java.sql.Time;
 import java.util.Calendar;
 
@@ -18,52 +31,124 @@ import java.util.Calendar;
  */
 public class addVideoFragment extends Fragment {
 
-        private Button saveTime;
-        private TimePicker timePicker;
-        Calendar calendar;
-        String time;
+    private static final int SELECT_VIDEO = 1;
 
-        public View onCreateView(LayoutInflater inflater,ViewGroup container,Bundle savedInstanceState ){
+    private Button saveTime;
+    private Button selectVideo;
+    private TimePicker timePicker;
+    private SeekBar seekBar;
+    private TextView seekBarOut;
+    Calendar calendar;
+    String time;
+    private TextView txtView;
+    private int interval;
 
-            final View view = inflater.inflate(R.layout.add_video_fragment_layout, container, false);
-            saveTime = (Button) view.findViewById(R.id.save_time);
-//            Toast.makeText(context, "Saved Time: \n" +
-//                    time, Toast.LENGTH_LONG).show();
+    private String selectedVideoPath;
 
+    public View onCreateView(LayoutInflater inflater,ViewGroup container,Bundle savedInstanceState ){
 
-            saveTime.setOnClickListener(new View.OnClickListener() {
+        final View view = inflater.inflate(R.layout.add_video_fragment_layout, container, false);
+        saveTime = (Button) view.findViewById(R.id.save_time);
+        timePicker = (TimePicker) view.findViewById(R.id.timePicker);
+        seekBar = (SeekBar) view.findViewById(R.id.seekBar);
+        seekBarOut = (TextView) view.findViewById(R.id.seekBarOut);
+        txtView = (TextView) view.findViewById(R.id.video_path);
+        selectVideo = (Button) view.findViewById(R.id.video_select);
+
+        saveTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                timePicker = (TimePicker) view.findViewById(R.id.timePicker);
-                int time_hour = timePicker.getHour();
-                int time_minute = timePicker.getMinute();
-
-                time = Integer.toString(time_hour);
-                time = time + Integer.toString(time_minute);
-
-                Context context = getContext();
-                Toast.makeText(context, "Saved Time: \n" +
-                        time, Toast.LENGTH_LONG).show();
-
-
+                saveSchedule(v);
             }
         });
 
-                return view;
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            int progressToChange = 0;
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                progressToChange = progress + 1;
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                interval = progressToChange*15;
+                String newInterval = Integer.toString(interval) + " mins";
+                seekBarOut.setText(newInterval);
+            }
+        });
+
+        selectVideo.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               videoSelector(v);
+           }
+       });
+        return view;
+    }
+
+    public void onActivityResult(int requestCode,int resultCode, Intent data){
+
+        Context context = getContext();
+        if(resultCode == Activity.RESULT_OK) {
+            //Toast.makeText(context, "2", Toast.LENGTH_LONG).show();
+            if (requestCode == SELECT_VIDEO) {
+                //Toast.makeText(context, "3", Toast.LENGTH_LONG).show();
+                selectedVideoPath = getPath(data.getData());
+//                final SMTApplication global = (SMTApplication) getActivity().getApplication();
+//                global.setPathName(selectedVideoPath); TODO save to global variable in SMTApplication
+
+                try {
+                        if (selectedVideoPath == null) {
+                                Log.e("addVideoAvtivity", "selected video path = null!");
+                                getActivity().finish();
+
+                            Toast.makeText(context, "Null", Toast.LENGTH_LONG).show();
+
+                        } else {
+                                Toast.makeText(context, selectedVideoPath, Toast.LENGTH_LONG).show();
+                                txtView.setText(selectedVideoPath);
+                        }
+                } catch (Exception e) {
+                        e.printStackTrace();
+                        Log.e("Error ::", e.toString());
+                }
+            }
         }
+    }
+
+    private void saveSchedule(View v) {
+
+        int time_hour = timePicker.getCurrentHour();
+        int time_minute = timePicker.getCurrentMinute();
+        time = Integer.toString(time_hour);
+        time = time + Integer.toString(time_minute);
+
+//        Context context = getContext();
+//        Toast.makeText(context, "Interval \n" + interval, Toast.LENGTH_LONG).show();
 
 
+    }
 
-        public void time_save(View view) {
-                timePicker = (TimePicker) view.findViewById(R.id.timePicker);
-                int time_hour = timePicker.getHour();
-                int time_minute = timePicker.getMinute();
+    private void videoSelector(View v) {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Video.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(intent, SELECT_VIDEO);
+    }
 
-                calendar = Calendar.getInstance();
-                int current_hour = calendar.get(Calendar.HOUR_OF_DAY);
-                int current_minute = calendar.get(Calendar.MINUTE);
-
-        }
+    private String getPath(Uri uri){
+            String[] projection = {MediaStore.Images.Media.DATA};
+            Cursor cursor = getActivity().getContentResolver().query(uri, projection, null, null, null);
+            if(cursor!=null){
+                    int column_index = cursor.getColumnIndexOrThrow(MediaStore.Video.Media.DATA);
+                    cursor.moveToFirst();
+                    return cursor.getString(column_index);
+            }
+            else return null;
+    }
 
 
 }
