@@ -40,13 +40,15 @@ public class LoginActivity extends Activity {
         //Read shared prefs
         if (pass.equals(sharedPrefs.getString("passKey", "admin"))) {
             Toast.makeText(LoginActivity.this, "Password Correct", Toast.LENGTH_LONG).show();
-        }
 
-        Bundle extras = getIntent().getExtras();
-        String classname = extras.getString("class");
-        Class<?> nextClass = Class.forName(classname);
-        Intent intent = new Intent(this,nextClass);
-        startActivity(intent);
+            Bundle extras = getIntent().getExtras();
+            String classname = extras.getString("class");
+            Class<?> nextClass = Class.forName(classname);
+            Intent intent = new Intent(this, nextClass);
+            startActivity(intent);
+        } else {
+            Toast.makeText(LoginActivity.this, "Incorrect Password", Toast.LENGTH_LONG).show();
+        }
 
     }
 }

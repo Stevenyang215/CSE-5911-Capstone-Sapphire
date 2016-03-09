@@ -1,38 +1,40 @@
 package sapphire.seemetrain;
 
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
 
 /**
- * File Created by Joseph on 3/2/16.
+ * File Created by Joseph
  */
-public class Playlist extends Fragment {
+public class Playlist {
 
-    private Button savePlaylist;
-    private Button selectNextVideo;
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        final View view = inflater.inflate(R.layout.playlist_fragment_layout, container, false);
-        savePlaylist = (Button) view.findViewById(R.id.save_playlist);
-        selectNextVideo = (Button) view.findViewById(R.id.next_video_select);
+    private String name = "New Playlist";
+    private ArrayList<VideoPath> playbackQueue = new ArrayList<>();
+    private Integer index = 0;
 
-        savePlaylist.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    public String getName() {
+        return name;
+    }
 
-            }
-        });
+    public Playlist(String playlistName, VideoPath video) {
+        name = playlistName;
+        playbackQueue.add(0, video);
+    }
 
-        selectNextVideo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
-        return view;
+    public VideoPath getNextVideo(){
+        VideoPath video = playbackQueue.get(index);
+        if (!(index == playbackQueue.size() - 1)){
+            index++;
+        } else {
+            index = 0;
+        }
+        return video;
+    }
+
+    public void addVideo(VideoPath video) {
+        playbackQueue.add(video);
     }
 }

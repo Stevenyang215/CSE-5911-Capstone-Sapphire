@@ -39,32 +39,19 @@ public class CreateAccount extends Activity {
     public void createAccount(View view){
         String name = nameField.getText().toString();
         String pass = passField.getText().toString();
-        initAccount(name, pass);
-        //SMTAccount myAccount = new SMTAccount(name, pass);
 
-        Intent intent = new Intent(this,HomeScreen.class);
-        startActivity(intent);
-
-    }
-
-    public static void initAccount(String name, String pass) {
         //Write to shared prefs
         SharedPreferences.Editor editor = sharedPrefs.edit();
         editor.putString("nameKey", name);
         editor.putString("passKey", pass);
         editor.commit();
+
+        SMTAccount myAccount = new SMTAccount(name, pass);
+
+        myAccount.setLoggedIn(true);
+        Intent intent = new Intent(this,HomeScreen.class);
+        startActivity(intent);
+
     }
 }
 
-class SMTAccount {
-
-    private String accName = "Trainer";
-    //private Schedule currentSchedule = new Schedule("empty");
-    private String accPass;
-
-
-    public SMTAccount(String name, String pass) {
-        accName = name;
-        accPass = pass;
-    }
-}

@@ -19,8 +19,8 @@ public class NewPlaylistActivity extends AppCompatActivity {
         title = (TextView) findViewById(R.id.new_playlist);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        Playlist playlistMaker = new Playlist();
-        fragmentTransaction.replace(R.id.fragment_container, playlistMaker);
+        PlaylistFragment playlistFragmentMaker = new PlaylistFragment();
+        fragmentTransaction.replace(R.id.fragment_container, playlistFragmentMaker);
         fragmentTransaction.commit();
 
 
