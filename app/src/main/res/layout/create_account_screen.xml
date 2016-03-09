@@ -68,4 +68,18 @@
         android:background="@color/colorPrimary"
         android:onClick="createAccount"/>
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/confirmpass"
+        android:textColorHint="@android:color/darker_gray"
+        android:hint="Re-enter Password"
+        android:layout_below="@+id/passText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>
