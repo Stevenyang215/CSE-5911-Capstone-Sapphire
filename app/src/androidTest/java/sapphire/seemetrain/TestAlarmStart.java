@@ -17,7 +17,7 @@ public class TestAlarmStart extends TestCase {
     }
 
     public void testOnCreate() throws Exception {
-        assertTrue(true);
+        //assertTrue(true);
     }
 
     public void testArming_alarm() throws Exception {

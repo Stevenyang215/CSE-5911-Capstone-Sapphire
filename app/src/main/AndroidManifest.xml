@@ -67,6 +67,14 @@
             android:name="android.support.PARENT_ACTIVITY"
             android:value="sapphire.seemetrain.HomeScreen" />
         </activity>
+        <activity
+            android:name=".CreateAccount"
+            android:label="CreateAccount" >
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:label="LoginActivity" >
+        </activity>
         <receiver android:name=".AlarmVideoReceiver" />
         <service
             android:name=".AlarmVideoService"
