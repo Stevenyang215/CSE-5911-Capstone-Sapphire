@@ -66,14 +66,13 @@ public class AlarmStart extends Activity {
 
         //global.getMinute()
         alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
-                1000 * 60 * global.getInterval(), alarmIntent); //TODO change inputs to match saved schedule
+                1000 * 60 * global.getMinute(), alarmIntent);
 
     }
 
     public void cancel_alarm(View v){
-        if (alarmMgr!= null) {
-            alarmMgr.cancel(alarmIntent);
-        }
+
+        alarmMgr.cancel(alarmIntent);
 
         Context context = this.getApplicationContext();
         Toast.makeText(context, "Canceled Alarm", Toast.LENGTH_LONG).show();

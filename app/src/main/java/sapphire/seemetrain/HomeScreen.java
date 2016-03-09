@@ -45,6 +45,11 @@ public class HomeScreen extends Activity {
         startActivity(intent);
     }
 
+    public void new_playlist_set_up(View view){
+        Intent intent = new Intent(this,NewPlaylistActivity.class);
+        startActivity(intent);
+    }
+
     public void play_video(View view){
         final SMTApplication global = (SMTApplication) getApplication();
         Uri uri = global.getPath();

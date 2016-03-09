@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_above="@id/begin_button"
-        android:text="Placehold"
+        android:text="Click To Start Alarm"
         android:textColor="#000000"
         android:textSize="12pt"/>
 

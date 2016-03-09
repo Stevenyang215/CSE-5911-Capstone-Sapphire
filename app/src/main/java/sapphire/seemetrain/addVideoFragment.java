@@ -63,7 +63,7 @@ public class addVideoFragment extends Fragment {
         });
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            int progressToChange = 0;
+            int progressToChange = 1;
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 progressToChange = progress + 1;

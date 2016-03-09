@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#405000">
+    android:background="@color/colorPrimary">
 
     <VideoView
         android:id="@+id/play_alarm"
