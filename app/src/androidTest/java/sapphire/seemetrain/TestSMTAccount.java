@@ -3,7 +3,7 @@ package sapphire.seemetrain;
 import junit.framework.TestCase;
 
 /**
- * File Created by Joseph on 3/9/16.
+ * File Created by Joseph on 3/8/16.
  */
 public class TestSMTAccount extends TestCase {
 
