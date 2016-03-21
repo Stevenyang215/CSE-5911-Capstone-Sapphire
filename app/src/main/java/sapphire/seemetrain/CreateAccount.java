@@ -20,6 +20,7 @@ public class CreateAccount extends Activity {
     private Button create_button;
     private EditText nameField;
     private EditText passField;
+    private EditText confirmField;
     private static SharedPreferences sharedPrefs;
     private String MyPREFERENCES = "MyPrefs";
 
@@ -33,24 +34,32 @@ public class CreateAccount extends Activity {
         create_button = (Button) findViewById(R.id.create_button);
         nameField = (EditText) findViewById(R.id.nameText);
         passField = (EditText) findViewById(R.id.passText);
+        confirmField = (EditText) findViewById(R.id.confirmpass);
         sharedPrefs = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
     }
 
     public void createAccount(View view){
         String name = nameField.getText().toString();
         String pass = passField.getText().toString();
+        String confirm = confirmField.getText().toString();
 
-        //Write to shared prefs
-        SharedPreferences.Editor editor = sharedPrefs.edit();
-        editor.putString("nameKey", name);
-        editor.putString("passKey", pass);
-        editor.commit();
+        if(pass.equals(confirm)){
+            //Write to shared prefs
+            SharedPreferences.Editor editor = sharedPrefs.edit();
+            editor.putString("nameKey", name);
+            editor.putString("passKey", pass);
+            editor.commit();
 
-        SMTAccount myAccount = new SMTAccount(name, pass);
+            SMTAccount myAccount = new SMTAccount(name, pass);
 
-        myAccount.setLoggedIn(true);
-        Intent intent = new Intent(this,HomeScreen.class);
-        startActivity(intent);
+            myAccount.setLoggedIn(true);
+            Intent intent = new Intent(this,HomeScreen.class);
+            startActivity(intent);
+
+        }
+        else{
+            Toast.makeText(CreateAccount.this,"Passwords do not match",Toast.LENGTH_LONG).show();
+        }
 
     }
 }
