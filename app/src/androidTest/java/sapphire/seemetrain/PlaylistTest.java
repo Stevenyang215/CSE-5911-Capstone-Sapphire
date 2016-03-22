@@ -14,6 +14,7 @@ public class PlaylistTest extends TestCase {
         VideoPath video = new VideoPath("Sit", uri);
         Playlist playlist = new Playlist("Test", video);
         assertEquals("Test", playlist.getName());
+
     }
 
     public void testGetNextVideo() throws Exception {
