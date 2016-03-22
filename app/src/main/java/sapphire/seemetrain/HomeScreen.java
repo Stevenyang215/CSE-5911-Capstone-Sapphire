@@ -1,6 +1,9 @@
 package sapphire.seemetrain;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -17,10 +20,19 @@ public class HomeScreen extends Activity {
     private Button record_button;
     private Button new_schedule;
     private Button play_button;
+    private SharedPreferences sharedPrefs;
+    private String MyPREFERENCES = "MyPrefs";
     //TODO Create standard button format/look
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
+
+        sharedPrefs = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        if(!sharedPrefs.contains("passKey")){
+            Intent intent = new Intent(this,CreateAccount.class);
+            startActivity(intent);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_home_screen);
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -29,9 +41,6 @@ public class HomeScreen extends Activity {
         record_button = (Button) findViewById(R.id.record_button);
         new_schedule = (Button) findViewById(R.id.new_schedule);
 
-
-
-        
     }
 
     public void record_video(View view){
@@ -44,10 +53,23 @@ public class HomeScreen extends Activity {
         startActivity(intent);
     }
 
+    public void new_playlist_set_up(View view){
+        Intent intent = new Intent(this,NewPlaylistActivity.class);
+        startActivity(intent);
+    }
+
     public void play_video(View view){
-        //Do nothing for now
-        //Intent intent = new Intent(this,video_repository.class); //TODO add video repo layout
-        //startActivity(intent);
+        final SMTApplication global = (SMTApplication) getApplication();
+        Uri uri = global.getPath();
+        Intent intent = new Intent(this,PlayPicked.class);
+        intent.setData(uri);
+        startActivity(intent);
+    }
+
+    public void begin_alarm(View v){
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.putExtra("class","sapphire.seemetrain.AlarmStart");
+        startActivity(intent);
     }
 
 

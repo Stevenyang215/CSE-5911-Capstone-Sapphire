@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Begin"
+        android:id="@+id/begin_button"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorButton"
+        android:onClick="arming_alarm"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:id="@+id/cancel_button"
+        android:layout_below="@+id/begin_button"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorButton"
+        android:onClick="cancel_alarm"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/begin_button"
+        android:text="Click To Start Alarm"
+        android:textColor="#000000"
+        android:textSize="12pt"/>
+
+</RelativeLayout>

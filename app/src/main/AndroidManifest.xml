@@ -6,16 +6,20 @@
         android:name="android.hardware.camera"
         android:required="false" />
 
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:name="SMTApplication">
         <activity
             android:name=".HomeScreen"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,6 +44,48 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="sapphire.seemetrain.HomeScreen" />
         </activity>
+        <activity
+            android:name=".AlarmStart"
+            android:label="@string/title_activity_alarm_start"
+            android:parentActivityName=".HomeScreen"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="sapphire.seemetrain.HomeScreen" />
+        </activity>
+        <activity
+            android:name=".PlayPicked"
+            android:label="PlayPicked"
+            android:parentActivityName=".HomeScreen"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="sapphire.seemetrain.HomeScreen" />
+        </activity>
+        <activity android:name=".AlarmPlay"
+            android:theme="@style/AppTheme.NoActionBar">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="sapphire.seemetrain.HomeScreen" />
+        </activity>
+        <activity
+            android:name=".CreateAccount"
+            android:label="CreateAccount" >
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:label="LoginActivity" >
+        </activity>
+        <receiver android:name=".AlarmVideoReceiver" />
+        <service
+            android:name=".AlarmVideoService"
+            android:label="@string/title_activity_alarm_video"
+            android:parentActivityName=".AlarmStart"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="sapphire.seemetrain.HomeScreen" />
+        </service>
     </application>
 
 </manifest>

@@ -64,6 +64,7 @@ public class video_capture extends AppCompatActivity {
                 File mediaFile = new File(getFilesDir() + path_name);
 
                 Intent captureVideo = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+                captureVideo.putExtra(MediaStore.EXTRA_DURATION_LIMIT,60);
 
                 //Save Video to unique file path
                 Uri videoUri = Uri.fromFile(mediaFile);
