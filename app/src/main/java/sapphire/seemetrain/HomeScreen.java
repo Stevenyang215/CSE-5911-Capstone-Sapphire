@@ -43,6 +43,10 @@ public class HomeScreen extends Activity {
 
     }
 
+    public void About(View view){
+        Intent intent = new Intent(this,About.class);
+        startActivity(intent);
+    }
     public void record_video(View view){
         Intent intent = new Intent(this,video_capture.class);
         startActivity(intent);
