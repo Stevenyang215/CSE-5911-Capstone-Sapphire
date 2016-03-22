@@ -45,6 +45,16 @@
                 android:value="sapphire.seemetrain.HomeScreen" />
         </activity>
         <activity
+            android:name=".About"
+            android:label="@string/title_activity_About"
+            android:parentActivityName=".HomeScreen"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="sapphire.seemetrain.HomeScreen" />
+        </activity>
+
+        <activity
             android:name=".AlarmStart"
             android:label="@string/title_activity_alarm_start"
             android:parentActivityName=".HomeScreen"

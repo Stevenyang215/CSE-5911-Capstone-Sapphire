@@ -5,6 +5,7 @@
     <string name="title_activity_new_schedule">NewScheduleActivity</string>
     <string name="title_activity_alarm_start">alarm_start</string>
     <string name="title_activity_alarm_video">alarm_video</string>
+    <string name="title_activity_About">About</string>
     <string name="scheduleInstructions1">Select the time to end video playback: </string>
     <string name="scheduleInstructions2">Select playback interval length: </string>
 </resources>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_about" tools:context="sapphire.seemetrain.About">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Many	dogs	are	le@	at	home	alone	for	at	least	up	to	8	–	10
+hours	a	day.	Many	pay	for	one-on-one	professional	training
+sessions	or	come	home	and	work	on	basic	commands	to
+train	your	dog.	See	Me	Train	training	app	allows	you	to
+train	your	pet	while	you	are	at	work	or	out	of	the	home	for
+an	extended	periods	of	Jme	during	the	day	or	night.
+
+
+Procedure: § Set	the	app	Jmer	to	turn	on	in	1	hour	increments	up	to	8
+§ Place	the	device	in	an	area	that	the	dog	can	hear	and	see	the	video,	but
+not	reach.
+§ Keep	the	commands	simple.	Repeat	the	commands.		Give	the	dog	praise
+(minus	the	treats).
+§ When	making	your	video,	make	it	as	natural	sounding	as	possible.	Allow
+for	a	few	minutes	to	let	the	dog	complete	the	command	since	you	can’t
+see	him/her	do	it.
+§ Come	home	and	test	it	out!	"
+        android:id="@+id/textView4"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>
