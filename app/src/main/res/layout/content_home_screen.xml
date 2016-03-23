@@ -3,6 +3,16 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="About"
+        android:id="@+id/about"
+        android:background="@color/colorButton"
+        android:onClick="About"
+        android:layout_gravity="right" />
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -10,14 +20,7 @@
         android:layout_alignParentBottom="true"
         android:gravity="bottom|center"
         android:layout_marginTop="60dp">
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="About"
-            android:id="@+id/about"
-            android:background="@color/colorButton"
-            android:onClick="About"
-            />
+
         <Button
             android:id="@+id/record_button"
             android:text="Record A Video"

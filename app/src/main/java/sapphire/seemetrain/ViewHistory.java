@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -36,19 +37,12 @@ public class ViewHistory extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         histPref = getSharedPreferences(historyPref, Context.MODE_PRIVATE);
         history_linear_layout = (LinearLayout) findViewById(R.id.HistView);
         title = (TextView) findViewById(R.id.Title);
         clear = (Button) findViewById(R.id.clear_history);
+
 
         Map<String,?> history_record = histPref.getAll();
 
@@ -90,7 +84,7 @@ public class ViewHistory extends AppCompatActivity {
                 maxValVideo = Video_name;
             }
         }
-        contentForHistory= maxValVideo+ " is played maximum number of times ("+max_count+" times)";
+        contentForHistory= maxValVideo+ " is the most played. It was played "+max_count+" times)";
         TextView newView = new TextView(this);
         newView.setText(contentForHistory);
         history_linear_layout.addView(newView);
@@ -99,7 +93,7 @@ public class ViewHistory extends AppCompatActivity {
 
     }
 
-    public void clearHistory(){
+    public void clearHistory(View view){
         SharedPreferences pref = getSharedPreferences(historyPref,Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
         int i = 1;
@@ -110,7 +104,10 @@ public class ViewHistory extends AppCompatActivity {
             key = "video" + i + "count";
         }
 
+        Toast.makeText(ViewHistory.this, "History Cleared", Toast.LENGTH_SHORT).show();
+
         editor.commit();
+        this.recreate();
     }
 
 }
