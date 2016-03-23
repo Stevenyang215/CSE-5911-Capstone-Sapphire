@@ -1,5 +1,16 @@
 package sapphire.seemetrain;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Environment;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
@@ -41,4 +52,32 @@ public class Playlist {
     public void addVideo(VideoPath video) {
         playbackQueue.add(video);
     }
+
+    public void writeToPreferences(int numberToWrite, View view, SharedPreferences.Editor editor, Context context) {
+
+        editor.putInt("currentVid", 1);
+        editor.putInt("lastVid", numberToWrite);
+
+        for (int i=1; i<(numberToWrite + 1); i++){
+            //Name
+            EditText nextName = (EditText) view.findViewWithTag("command" + i);
+            String key = "video" + i + "name";
+            if(!(nextName == null)){
+                String name = nextName.getText().toString();
+            }
+            editor.putString(key, name);
+
+            //Path
+            key = "video" + i + "path";
+            VideoPath video = getNextVideo();
+            String path = video.getLocalPath().toString();
+            editor.putString(key, path);
+
+            //Count
+            key = "video" + i + "count";
+            editor.putInt(key, 0);
+        }
+        editor.commit();
+    }
 }
+

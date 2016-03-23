@@ -3,7 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CSE-5911-Capstone-Sapphire.iml" filepath="$PROJECT_DIR$/CSE-5911-Capstone-Sapphire.iml" />
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/CSE-5911-Capstone-Sapphire.iml" filepath="$PROJECT_DIR$/CSE-5911-Capstone-Sapphire.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/SeeMeTrain.iml" filepath="$PROJECT_DIR$/SeeMeTrain.iml" />
+>>>>>>> 654f82ed86902954fe47682d0365c7e820ebce4d
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
