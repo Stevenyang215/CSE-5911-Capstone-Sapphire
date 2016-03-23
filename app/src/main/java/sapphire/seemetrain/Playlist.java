@@ -62,7 +62,9 @@ public class Playlist {
             //Name
             EditText nextName = (EditText) view.findViewWithTag("command" + i);
             String key = "video" + i + "name";
-            String name = nextName.getText().toString();
+            if(!(nextName == null)){
+                String name = nextName.getText().toString();
+            }
             editor.putString(key, name);
 
             //Path

@@ -39,6 +39,7 @@ public class NewPlaylistActivity extends AppCompatActivity {
         //update the history view sharedPreference
         histPref = getSharedPreferences(historyPref, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = histPref.edit();
+        histPref.contains("video1name");
 
         String content = "Create a new playlist for training";
         Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT+1:00"));

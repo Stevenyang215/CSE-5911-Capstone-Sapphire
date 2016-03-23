@@ -1,6 +1,11 @@
 package sapphire.seemetrain;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
+import android.test.ActivityInstrumentationTestCase2;
+import android.test.AndroidTestCase;
+import android.test.InstrumentationTestCase;
 
 import junit.framework.TestCase;
 
