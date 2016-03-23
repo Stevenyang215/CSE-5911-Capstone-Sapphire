@@ -20,6 +20,7 @@ public class HomeScreen extends Activity {
     private Button record_button;
     private Button new_schedule;
     private Button play_button;
+    private Button view_history;
     private SharedPreferences sharedPrefs;
     private String MyPREFERENCES = "MyPrefs";
     //TODO Create standard button format/look
@@ -40,6 +41,7 @@ public class HomeScreen extends Activity {
 
         record_button = (Button) findViewById(R.id.record_button);
         new_schedule = (Button) findViewById(R.id.new_schedule);
+        view_history = (Button) findViewById(R.id.history_view);
 
     }
 
@@ -72,7 +74,12 @@ public class HomeScreen extends Activity {
 
     public void begin_alarm(View v){
         Intent intent = new Intent(this, LoginActivity.class);
-        intent.putExtra("class","sapphire.seemetrain.AlarmStart");
+        intent.putExtra("class", "sapphire.seemetrain.AlarmStart");
+        startActivity(intent);
+    }
+
+    public void view_history(View V){
+        Intent intent = new Intent(this,ViewHistory.class);
         startActivity(intent);
     }
 

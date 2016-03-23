@@ -1,19 +1,29 @@
 package sapphire.seemetrain;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Button;
 
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
+
 
 public class NewScheduleActivity extends AppCompatActivity {
 
     private TextView title;
-
+    private SharedPreferences histPref;
+    private String historyPref = "hist_pref";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +37,19 @@ public class NewScheduleActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.fragment_container, add_Video_Fragment);
         fragmentTransaction.commit();
 
+
+        //update the history view sharedPreference
+        histPref = getSharedPreferences(historyPref, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = histPref.edit();
+
+        String content = "Create a new schdule for training";
+        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT+1:00"));
+        Date currentLocalTime = cal.getTime();
+        DateFormat date = new SimpleDateFormat("HH:mm a");
+        date.setTimeZone(TimeZone.getTimeZone("GMT+1:00"));
+
+        String localTime = date.format(currentLocalTime);
+        editor.putString(content,localTime);
 
     }
 
