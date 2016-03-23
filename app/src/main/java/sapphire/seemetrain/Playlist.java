@@ -19,6 +19,10 @@ public class Playlist {
         return name;
     }
 
+    public Playlist(){
+
+    }
+
     public Playlist(String playlistName, VideoPath video) {
         name = playlistName;
         playbackQueue.add(0, video);
