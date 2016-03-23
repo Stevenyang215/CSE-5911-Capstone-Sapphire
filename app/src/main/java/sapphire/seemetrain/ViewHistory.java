@@ -13,13 +13,16 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.lang.String;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+import static java.lang.Integer.parseInt;
+
 public class ViewHistory extends AppCompatActivity {
 
-    private String historyPref = "hist_pref";
+    private String historyPref = "MyPrefs";
     private static SharedPreferences histPref;
     private LinearLayout history_linear_layout;
     private TextView title;
@@ -48,7 +51,7 @@ public class ViewHistory extends AppCompatActivity {
 
         Set keys = history_record.keySet();
 
-        for(Iterator i = keys.iterator();i.hasNext();)
+       /* for(Iterator i = keys.iterator();i.hasNext();)
         {
             String key = (String) i.next();
             String value = (String) history_record.get(key);
@@ -59,8 +62,34 @@ public class ViewHistory extends AppCompatActivity {
 
             history_linear_layout.addView(newView);
 
-        }
+        }*/
+        int lastvideo= (Integer) history_record.get("lastVid");
+        String maxValVideo="None";
+        String contentForHistory;
+        String Video_name="video1name";
+        int max_count=(Integer)history_record.get("video1count");
+        String Video_count;
+        for(int i=1;i<=lastvideo;i++){
+            Video_name="video"+i+"name";
+            Video_count="video"+i+"count";
+            int vidcnt=0;
+            if(history_record.containsKey(Video_name)){
+                Video_name = (String) history_record.get(Video_name);
 
+            }
+            if(history_record.containsKey(Video_count)){
+                vidcnt= (Integer) history_record.get(Video_count);
+
+            }
+            if(vidcnt>=max_count){
+                max_count=vidcnt;
+                maxValVideo = Video_name;
+            }
+        }
+        contentForHistory= maxValVideo+ " is played maximum number of times ("+max_count+" times)";
+        TextView newView = new TextView(this);
+        newView.setText(contentForHistory);
+        history_linear_layout.addView(newView);
 
 
     }
