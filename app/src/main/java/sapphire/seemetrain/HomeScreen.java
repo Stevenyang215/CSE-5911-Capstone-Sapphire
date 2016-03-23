@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.content.Intent;
+import android.widget.TextView;
 
 //TODO Need unit test cases
 
@@ -22,6 +23,7 @@ public class HomeScreen extends Activity {
     private Button play_button;
     private Button view_history;
     private SharedPreferences sharedPrefs;
+    private TextView textView;
     private String MyPREFERENCES = "MyPrefs";
     //TODO Create standard button format/look
 
