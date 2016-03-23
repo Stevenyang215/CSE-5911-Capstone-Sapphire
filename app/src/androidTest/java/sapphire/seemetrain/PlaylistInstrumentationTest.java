@@ -104,4 +104,18 @@ public class PlaylistInstrumentationTest extends InstrumentationTestCase {
         assertEquals(sharedPref.getString("video1path", ""), "file:///tmp/sit.mp4");
     }
 
+    public void testWriteToPreferencesGeneral() throws Exception {
+        SharedPreferences sharedPref = getInstrumentation().getTargetContext().
+                getSharedPreferences(KEY_SP_PACKAGE, Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+        Uri uri = Uri.parse("file:///tmp/sit.mp4");
+        VideoPath video = new VideoPath("Sit", uri);
+        Playlist playlist = new Playlist("Test", video);
+        RelativeLayout relativeLayout = new RelativeLayout(getInstrumentation().getContext());
+        playlist.writeToPreferences(3, relativeLayout, editor, getInstrumentation().getContext());
+        assertEquals(sharedPref.getString("video1path", ""), "file:///tmp/sit.mp4");
+    }
+
 }
