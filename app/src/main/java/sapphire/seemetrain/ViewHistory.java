@@ -2,6 +2,7 @@ package sapphire.seemetrain;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -26,6 +27,7 @@ public class ViewHistory extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_history);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -43,6 +45,24 @@ public class ViewHistory extends AppCompatActivity {
         histPref = getSharedPreferences(historyPref, Context.MODE_PRIVATE);
         history_linear_layout = (LinearLayout) findViewById(R.id.HistView);
         title = (TextView) findViewById(R.id.Title);
+        TextView lplayed = (TextView) findViewById(R.id.lastplayed);
+        TextView st = (TextView) findViewById(R.id.starttime);
+        TextView intval = (TextView) findViewById(R.id.interval);
+        //TextView endtime = (TextView) findViewById(R.id.endtime);
+
+        final SMTApplication global = (SMTApplication) getApplication();
+        String hour= Integer.toString(global.getHour());
+        String minuteS = Integer.toString(global.getMinute());
+        String tottime=hour+"::"+minuteS;
+        Uri path = global.getPath();
+        intval.setText(Integer.toString(global.getInterval()));
+        st.setText(tottime);
+        lplayed.setText(path.toString());
+        //intval.setText("15");
+        //st.setText("2::30");
+        //lplayed.setText("Sit");
+
+
 
         Map<String,?> history_record = histPref.getAll();
 
