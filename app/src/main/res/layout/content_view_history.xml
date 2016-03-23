@@ -22,7 +22,9 @@
         android:layout_centerHorizontal="true" />
     <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/Title"
+        android:id="@+id/scrollView">
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -30,8 +32,7 @@
             android:id="@+id/HistView"
             android:layout_below="@+id/Title">
 
-        </LinearLayout>
-    </ScrollView>
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -112,4 +113,17 @@
         android:layout_below="@+id/starttime"
         android:layout_alignLeft="@+id/starttime"
         android:layout_alignStart="@+id/starttime" />
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clear"
+        android:gravity="bottom"
+        android:id="@+id/clear_history"
+        android:onClick="clearHistory"
+        android:layout_alignBottom="@+id/scrollView"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
