@@ -8,6 +8,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -26,6 +27,7 @@ public class ViewHistory extends AppCompatActivity {
     private static SharedPreferences histPref;
     private LinearLayout history_linear_layout;
     private TextView title;
+    private Button clear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +48,12 @@ public class ViewHistory extends AppCompatActivity {
         histPref = getSharedPreferences(historyPref, Context.MODE_PRIVATE);
         history_linear_layout = (LinearLayout) findViewById(R.id.HistView);
         title = (TextView) findViewById(R.id.Title);
+        clear = (Button) findViewById(R.id.clear_history);
 
         Map<String,?> history_record = histPref.getAll();
 
         Set keys = history_record.keySet();
+
 
        /* for(Iterator i = keys.iterator();i.hasNext();)
         {
@@ -92,6 +96,21 @@ public class ViewHistory extends AppCompatActivity {
         history_linear_layout.addView(newView);
 
 
+
+    }
+
+    public void clearHistory(){
+        SharedPreferences pref = getSharedPreferences(historyPref,Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        int i = 1;
+        String key = "video" + i + "count";
+        while(pref.contains(key)){
+            editor.putInt(key,0);
+            i++;
+            key = "video" + i + "count";
+        }
+
+        editor.commit();
     }
 
 }
