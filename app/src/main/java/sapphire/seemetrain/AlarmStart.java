@@ -61,12 +61,12 @@ public class AlarmStart extends Activity {
 
 // setRepeating() lets you specify a precise custom interval
         Context context = this.getApplicationContext();
-        Toast.makeText(context, "Stop Time: " + hourS + ":" + minuteS + ".\nInterval: "
-                + interval + "minutes.\n" + path.toString(), Toast.LENGTH_LONG).show();
+//        Toast.makeText(context, "Stop Time: " + hourS + ":" + minuteS + ".\nInterval: "
+//                + interval + "minutes.\n" + path.toString(), Toast.LENGTH_LONG).show();
 
         //global.getMinute()
         alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
-                1000 * 60 * global.getMinute(), alarmIntent);
+                1000 * 60 * 1, alarmIntent); //TODO MINUTE
 
     }
 
