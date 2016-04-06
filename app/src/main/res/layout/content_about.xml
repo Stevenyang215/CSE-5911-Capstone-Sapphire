@@ -11,12 +11,11 @@
     tools:showIn="@layout/activity_about" tools:context="sapphire.seemetrain.About"
     android:weightSum="1">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_height="66dp"
         android:layout_width="match_parent"
         android:orientation="horizontal"
-        android:layout_weight="0.06"
-        android:background="#ffffff">
+        android:layout_weight="0.06">
 
 
         <ImageView
@@ -28,35 +27,33 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:layout_marginRight="10dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="About See Me Train"
-            android:id="@+id/textView5" />
-    </LinearLayout>
-    <TextView
+            android:id="@+id/textView5"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/imageView"
+            android:layout_toEndOf="@+id/imageView"
+            android:paddingLeft="5dp" />
+    </RelativeLayout>
+
+    <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Many	dogs	are	left	at	home	alone	for	at	least	up	to	8	–	10
-hours	a	day.	Many	pay	for	one-on-one	professional	training
-sessions	or	come	home	and	work	on	basic	commands	to
-train	your	dog.	See	Me	Train	training	app	allows	you	to
-train	your	pet	while	you	are	at	work	or	out	of	the	home	for
-an	extended	periods	of	time	during	the	day	or	night.
+        android:id="@+id/scrollView3" >
 
-\n\nProcedure: \n§ Set	the	schedule and playlist information
-\n§ Place	the	device	in	an	area	that	the	dog	can	hear	and	see	the	video,	but
-not	reach.
-\n§ Keep	the	commands	simple.	Repeat	the	commands.		Give	the	dog	praise
-(minus	the	treats).
-\n§ When	making	your	video,	make	it	as	natural	sounding	as	possible.	Allow
-for	a	few	minutes	to	let	the	dog	complete	the	command	since	you	can’t
-see	him/her	do	it.
-\n§ Come	home	and	test	it	out!
-\n
-\n Developed by Team Sapphire in Capstone Programfrom College of Computer Science and Engineering in Ohio State University
-\n Team members: Joe Donnelly, Ramya Ravishankar, Soumyashree and Zijiang Yang
-\n Professor: Alan Cline"
-        android:id="@+id/textView4"
-        android:layout_centerHorizontal="true" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/aboutText"
+                android:id="@+id/textView4"
+                android:layout_centerHorizontal="true" />
+
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>

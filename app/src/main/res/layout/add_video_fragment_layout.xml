@@ -1,46 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1">
 
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="SAVE AS NEW SCHEDULE"
-        android:id="@+id/save_time"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorButton" />
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="1">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Choose a video"
-            android:id="@+id/video_select"
-            android:onClick="selectVideo"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="\n Video Path Name"
-            android:id="@+id/video_path"
-            android:layout_weight="0.92"
-            android:textAlignment="center" />
-
-    </LinearLayout>
-
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="0dp"
+        android:layout_alignParentTop="true">
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -49,36 +20,39 @@
             android:layout_centerHorizontal="true">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="33dp"
+                android:layout_height="30dp"
                 android:text="@string/scheduleInstructions2"
                 android:textColor="#000000"
                 android:id="@+id/textView2"
-                android:layout_marginStart="25dp"
-                android:layout_marginLeft="25dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp" />
+                android:layout_gravity="center_horizontal" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="1">
                 <SeekBar
-                    android:layout_width="282dp"
-                    android:layout_height="40dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="25dp"
                     android:layout_marginLeft="25dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginEnd="20dp"
                     android:id="@+id/seekBar"
+                    android:layout_weight=".90"
                     android:max="7"
                     android:indeterminate="false" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:id="@+id/seekBarOut"
                     android:textColor="#000000"
-                    android:text="15 min" />
+                    android:text="15 min"
+                    android:gravity="center_vertical"
+                    android:layout_weight=".10"
+                    android:layout_gravity="center_vertical" />
             </LinearLayout>
 
             <TextView
@@ -87,19 +61,19 @@
                 android:text="@string/scheduleInstructions1"
                 android:textColor="#000000"
                 android:id="@+id/textView3"
-                android:layout_marginStart="25dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal" />
 
 
             <TimePicker
-                android:layout_width="325dp"
-                android:layout_height="fill_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:id="@+id/timePicker"
+                android:layout_gravity="center_horizontal"
                 />
 
         </LinearLayout>
     </ScrollView>
 
 
-</LinearLayout>
+</RelativeLayout>

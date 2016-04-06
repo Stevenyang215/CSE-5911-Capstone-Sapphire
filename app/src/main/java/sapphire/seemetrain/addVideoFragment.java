@@ -39,28 +39,25 @@ public class addVideoFragment extends Fragment {
     private SeekBar seekBar;
     private TextView seekBarOut;
     Calendar calendar;
-    String time;
+    static String time;
     private TextView txtView;
-    private int interval;
+    public static int interval;
 
     private String selectedVideoPath;
 
     public View onCreateView(LayoutInflater inflater,ViewGroup container,Bundle savedInstanceState ){
 
         final View view = inflater.inflate(R.layout.add_video_fragment_layout, container, false);
-        saveTime = (Button) view.findViewById(R.id.save_time);
         timePicker = (TimePicker) view.findViewById(R.id.timePicker);
         seekBar = (SeekBar) view.findViewById(R.id.seekBar);
         seekBarOut = (TextView) view.findViewById(R.id.seekBarOut);
-        txtView = (TextView) view.findViewById(R.id.video_path);
-        selectVideo = (Button) view.findViewById(R.id.video_select);
 
-        saveTime.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                saveSchedule(v);
-            }
-        });
+//        saveTime.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                saveSchedule(v);
+//            }
+//        });
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             int progressToChange = 1;
@@ -82,12 +79,6 @@ public class addVideoFragment extends Fragment {
             }
         });
 
-        selectVideo.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               videoSelector(v);
-           }
-       });
         return view;
     }
 
@@ -121,7 +112,7 @@ public class addVideoFragment extends Fragment {
         }
     }
 
-    private void saveSchedule(View v) {
+    public void saveSchedule(View v) {
 
         int time_hour = timePicker.getCurrentHour();
         int time_minute = timePicker.getCurrentMinute(); //TODO fix single digit minute error
@@ -137,18 +128,10 @@ public class addVideoFragment extends Fragment {
         global.setMinute(time_minute);
         global.setCount(0);
 
-        Context context = getContext();
-        Toast.makeText(context, "Save Success.", Toast.LENGTH_LONG).show();
-
 //        Context context = getContext();
 //        Toast.makeText(context, "Interval \n" + interval, Toast.LENGTH_LONG).show();
 
 
-    }
-
-    private void videoSelector(View v) {
-        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Video.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(intent, SELECT_VIDEO);
     }
 
     private String getPath(Uri uri){
@@ -162,6 +145,12 @@ public class addVideoFragment extends Fragment {
             else return null;
     }
 
+    public static int getInterval(){
+        return interval;
+    }
 
+    public void save(View v){
+        saveSchedule(v);
+    }
 }
 
