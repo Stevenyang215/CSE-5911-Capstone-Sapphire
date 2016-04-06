@@ -38,21 +38,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Last Played "
+                android:text="Last Saved Schedule"
                 android:id="@+id/lastplayedid"
                 android:layout_below="@+id/Title"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="med"
-                android:id="@+id/lastplayed"
-                android:layout_alignTop="@+id/lastplayedid"
-                android:layout_toRightOf="@+id/Title"
-                android:layout_toEndOf="@+id/Title" />
+                android:layout_alignParentStart="true"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -68,6 +59,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/interval"
+                android:layout_below="@+id/lastplayed"
+                android:layout_alignLeft="@+id/lastplayed"
+                android:layout_alignStart="@+id/lastplayed" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Start Time"
                 android:id="@+id/starttimeid"
                 android:layout_below="@+id/intervalid"
@@ -78,41 +78,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Medium Text"
-                android:id="@+id/interval"
-                android:layout_below="@+id/lastplayed"
-                android:layout_alignLeft="@+id/lastplayed"
-                android:layout_alignStart="@+id/lastplayed" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Medium Text"
                 android:id="@+id/starttime"
                 android:layout_alignTop="@+id/starttimeid"
                 android:layout_alignLeft="@+id/interval"
                 android:layout_alignStart="@+id/interval" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="End Time"
-                android:id="@+id/endtimeid"
-                android:layout_below="@+id/starttimeid"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Medium Text"
-                android:id="@+id/endtime"
-                android:layout_below="@+id/starttime"
-                android:layout_alignLeft="@+id/starttime"
-                android:layout_alignStart="@+id/starttime" />
         </LinearLayout>
     </ScrollView>
 
