@@ -22,13 +22,6 @@ public class video_capture extends AppCompatActivity {
     static final int REQUEST_VIDEO_CAPTURE = 1;
 
     private Button record_button;
-    private Button play_button;
-    //TODO Add stop/pause buttons to layout
-    private Button stop_button;
-    private Button pause_button;
-
-    private Button save_button;
-    private VideoView videoView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,19 +34,13 @@ public class video_capture extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, R.string.recordInstructions, Snackbar.LENGTH_INDEFINITE)
                         .setAction("Action", null).show();
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         record_button = (Button) findViewById(R.id.record_button);
-        play_button = (Button) findViewById(R.id.play_button);
-        //stop_button = (Button) findViewById(R.id.stop_button);
-        //pause_button = (Button) findViewById(R.id.pause_button);
-
-        save_button = (Button) findViewById(R.id.save_button);
-        videoView = (VideoView) findViewById(R.id.videoView);
 
         record_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,42 +63,12 @@ public class video_capture extends AppCompatActivity {
             }
         });
 
-        play_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                videoView.start();
-            }
-        });
-
-//        stop_button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                videoView.stopPlayback();
-//            }
-//        });
-//
-//        pause_button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                //Check canPause() ?
-//                videoView.pause();
-//            }
-//        });
-
-        save_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         if(requestCode == REQUEST_VIDEO_CAPTURE && resultCode == RESULT_OK){
             if (resultCode == RESULT_OK) {
-                Toast.makeText(this, "Video saved to:\n" +
-                        data.getData(), Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Video saved to:", Toast.LENGTH_LONG).show();
             } else if (resultCode == RESULT_CANCELED) {
                 Toast.makeText(this, "Video recording cancelled.",
                         Toast.LENGTH_LONG).show();
