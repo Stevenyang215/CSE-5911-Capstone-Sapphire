@@ -104,7 +104,7 @@ public class ViewHistory extends AppCompatActivity {
             newView.setText(contentForHistory);
             history_linear_layout.addView(newView);
         } else {
-            lplayed.setText("No History Yet. Create a playlist to start");
+            //lplayed.setText("No History Yet. Create a playlist to start");
         }
 
     }

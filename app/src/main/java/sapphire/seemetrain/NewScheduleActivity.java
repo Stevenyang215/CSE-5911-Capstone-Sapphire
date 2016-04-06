@@ -42,16 +42,16 @@ public class NewScheduleActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.fragment_container, add_Video_Fragment);
         fragmentTransaction.commit();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                //addVideoFragment.save(view);
-                Snackbar.make(view, "Save Success", Snackbar.LENGTH_INDEFINITE)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                addVideoFragment.save(view);
+//                Snackbar.make(view, "Save Success", Snackbar.LENGTH_INDEFINITE)
+//                        .setAction("Action", null).show();
+//            }
+//        });
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
@@ -85,7 +85,7 @@ public class NewScheduleActivity extends AppCompatActivity {
 
         final SMTApplication global = (SMTApplication) getApplication();
 //        global.setPath(data.getData);
-        global.setInterval(addVideoFragment.getInterval());
+//        global.setInterval(addVideoFragment.getInterval());
         global.setHour(time_hour);
         global.setMinute(time_minute);
         global.setCount(0);

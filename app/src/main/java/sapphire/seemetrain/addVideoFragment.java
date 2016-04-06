@@ -2,6 +2,8 @@ package sapphire.seemetrain;
 
 import android.content.Context;
 import android.provider.MediaStore;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -79,6 +81,17 @@ public class addVideoFragment extends Fragment {
             }
         });
 
+        FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                saveSchedule(view);
+                Snackbar.make(view, "Schedule Saved", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+
         return view;
     }
 
@@ -143,14 +156,6 @@ public class addVideoFragment extends Fragment {
                     return cursor.getString(column_index);
             }
             else return null;
-    }
-
-    public static int getInterval(){
-        return interval;
-    }
-
-    public void save(View v){
-        saveSchedule(v);
     }
 }
 
