@@ -47,16 +47,17 @@ public class ViewHistory extends AppCompatActivity {
         //TextView endtime = (TextView) findViewById(R.id.endtime);
 
         final SMTApplication global = (SMTApplication) getApplication();
-        String hour= Integer.toString(global.getHour());
+        int inthour=global.getHour();
+        String ampm="AM";
+        if(inthour>12){
+            inthour=inthour-12;
+            ampm="PM";
+        }
+        String hour= Integer.toString(inthour);
         String minuteS = Integer.toString(global.getMinute());
-        String tottime=hour+"::"+minuteS;
+        String tottime=hour+":"+minuteS+" "+ampm;
         intval.setText(Integer.toString(global.getInterval()));
         st.setText(tottime);
-        String path1 = histPref.getString("video1name", "");
-        lplayed.setText(path1);
-        //intval.setText("15");
-        //st.setText("2::30");
-        //lplayed.setText("Sit");
 
 
 
