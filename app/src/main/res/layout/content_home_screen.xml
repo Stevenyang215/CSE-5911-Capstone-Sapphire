@@ -11,15 +11,6 @@
         android:background="?attr/colorPrimary"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="About"
-        android:id="@+id/about"
-        android:background="@color/colorButton"
-        android:onClick="About"
-        android:layout_gravity="right" />
-
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -82,6 +73,16 @@
             android:background="@color/colorButton"
             android:layout_marginTop="16dp"
             android:onClick="view_history" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="About"
+            android:id="@+id/about"
+            android:background="@color/colorButton"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:onClick="About"
+            android:layout_gravity="right" />
     </LinearLayout>
 
 </LinearLayout>

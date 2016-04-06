@@ -10,6 +10,7 @@ import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
 import android.widget.Button;
 import android.content.Intent;
 import android.widget.TextView;
@@ -44,6 +45,9 @@ public class HomeScreen extends Activity {
         record_button = (Button) findViewById(R.id.record_button);
         new_schedule = (Button) findViewById(R.id.new_schedule);
         view_history = (Button) findViewById(R.id.history_view);
+
+        Window window = this.getWindow();
+        window.setStatusBarColor(this.getResources().getColor(R.color.colorPrimary));
 
     }
 
