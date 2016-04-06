@@ -1,14 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_about" tools:context="sapphire.seemetrain.About">
+    tools:showIn="@layout/activity_about" tools:context="sapphire.seemetrain.About"
+    android:weightSum="1">
 
+    <LinearLayout
+        android:layout_height="66dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="0.06"
+        android:background="#ffffff">
+
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView"
+            android:src="@drawable/dog_icon"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="10dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="About See Me Train"
+            android:id="@+id/textView5" />
+    </LinearLayout>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,7 +44,6 @@ train	your	dog.	See	Me	Train	training	app	allows	you	to
 train	your	pet	while	you	are	at	work	or	out	of	the	home	for
 an	extended	periods	of	time	during	the	day	or	night.
 
-
 \n\nProcedure: \n§ Set	the	schedule and playlist information
 \n§ Place	the	device	in	an	area	that	the	dog	can	hear	and	see	the	video,	but
 not	reach.
@@ -28,7 +52,11 @@ not	reach.
 \n§ When	making	your	video,	make	it	as	natural	sounding	as	possible.	Allow
 for	a	few	minutes	to	let	the	dog	complete	the	command	since	you	can’t
 see	him/her	do	it.
-\n§ Come	home	and	test	it	out!	"
+\n§ Come	home	and	test	it	out!
+\n
+\n Developed by Team Sapphire in Capstone Programfrom College of Computer Science and Engineering in Ohio State University
+\n Team members: Joe Donnelly, Ramya Ravishankar, Soumyashree and Zijiang Yang
+\n Professor: Alan Cline"
         android:id="@+id/textView4"
         android:layout_centerHorizontal="true" />
-</RelativeLayout>
+</LinearLayout>
