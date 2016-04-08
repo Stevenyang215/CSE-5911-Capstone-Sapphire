@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.content.Intent;
+import android.view.Window;
 import android.widget.Toast;
 
 import java.util.Calendar;
@@ -30,6 +31,9 @@ public class AlarmStart extends Activity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm_start);
+
+        Window window = this.getWindow();
+        window.setStatusBarColor(this.getResources().getColor(R.color.colorPrimary));
 
         final SMTApplication global = (SMTApplication) getApplication();
         path = global.getPath();

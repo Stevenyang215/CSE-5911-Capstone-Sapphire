@@ -3,86 +3,94 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:weightSum="1"
+    >
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
+
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_alignParentBottom="true"
-        android:gravity="bottom|center"
-        android:layout_marginTop="60dp">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView4" >
 
-        <Button
-            android:id="@+id/record_button"
-            android:text="Record A Video"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorButton"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:onClick="record_video" />
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true"
+            android:gravity="bottom|center"
+            android:layout_marginTop="60dp">
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="New Schedule"
-            android:id="@+id/new_schedule"
-            android:layout_gravity="center_horizontal"
-            android:background="@color/colorButton"
-            android:onClick="new_schedule_set_up" />
+            <Button
+                android:id="@+id/record_button"
+                android:text="Record A Video"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorButton"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:onClick="record_video" />
 
-        <Button
-            android:id="@+id/new_playlist"
-            android:text="Create a Playlist"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorButton"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:onClick="new_playlist_set_up" />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="New Schedule"
+                android:id="@+id/new_schedule"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/colorButton"
+                android:onClick="new_schedule_set_up" />
 
-        <Button
-            android:id="@+id/play_button"
-            android:text="Play A Video"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorButton"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:onClick="play_video" />
+            <Button
+                android:id="@+id/new_playlist"
+                android:text="Create a Playlist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorButton"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:onClick="new_playlist_set_up" />
 
-        <Button
-            android:id="@+id/begin_button"
-            android:text="Begin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorButton"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:onClick="begin_alarm" />
+            <Button
+                android:id="@+id/play_button"
+                android:text="Play A Video"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorButton"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:onClick="play_video" />
 
-        <Button
-            android:id="@+id/history_view"
-            android:text="View History"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorButton"
-            android:layout_marginTop="16dp"
-            android:onClick="view_history" />
+            <Button
+                android:id="@+id/begin_button"
+                android:text="Begin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorButton"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:onClick="begin_alarm" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="About"
-            android:id="@+id/about"
-            android:background="@color/colorButton"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:onClick="About"
-            android:layout_gravity="right" />
-    </LinearLayout>
+            <Button
+                android:id="@+id/history_view"
+                android:text="View History"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorButton"
+                android:layout_marginTop="16dp"
+                android:onClick="view_history" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="About"
+                android:id="@+id/about"
+                android:background="@color/colorButton"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:onClick="About"
+                android:layout_gravity="right" />
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

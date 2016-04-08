@@ -7,6 +7,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,7 +19,7 @@ import android.widget.TextView;
 
 //TODO Need unit test cases
 
-public class HomeScreen extends Activity {
+public class HomeScreen extends AppCompatActivity {
 
     private Button record_button;
     private Button new_schedule;
@@ -31,13 +33,15 @@ public class HomeScreen extends Activity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
 
+        super.onCreate(savedInstanceState);
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
         sharedPrefs = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         if(!sharedPrefs.contains("passKey")){
             Intent intent = new Intent(this,CreateAccount.class);
             startActivity(intent);
         }
 
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.content_home_screen);
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
