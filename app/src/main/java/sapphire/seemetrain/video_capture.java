@@ -1,10 +1,12 @@
 package sapphire.seemetrain;
 
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.content.Intent;
 import android.provider.MediaStore;
@@ -14,12 +16,15 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 
 public class video_capture extends AppCompatActivity {
 
-    static final int REQUEST_VIDEO_CAPTURE = 1;
+    public static final int REQUEST_VIDEO_CAPTURE = 1;
+    public static final int MEDIA_TYPE_VIDEO = 2;
 
     private Button record_button;
 
@@ -46,9 +51,7 @@ public class video_capture extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //Create a unique file name
-                String path_name = generateVideoName();
-                File mediaFile = new File(getFilesDir() + path_name);
+                File mediaFile = getOutputMediaFile(2);
 
                 Intent captureVideo = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
                 captureVideo.putExtra(MediaStore.EXTRA_DURATION_LIMIT,60);
@@ -69,6 +72,8 @@ public class video_capture extends AppCompatActivity {
         if(requestCode == REQUEST_VIDEO_CAPTURE && resultCode == RESULT_OK){
             if (resultCode == RESULT_OK) {
                 Toast.makeText(this, "Video saved to:", Toast.LENGTH_LONG).show();
+                //Uri uri = data.getData();
+                //galleryAddPic(uri);
             } else if (resultCode == RESULT_CANCELED) {
                 Toast.makeText(this, "Video recording cancelled.",
                         Toast.LENGTH_LONG).show();
@@ -79,17 +84,36 @@ public class video_capture extends AppCompatActivity {
         }
     }
 
-    private String generateVideoName(){
+    /** Create a File for saving an image or video */
+    private static File getOutputMediaFile(int type){
 
-        //Use current time as a unique file name
-        Calendar right_now = Calendar.getInstance();
-        String vid_name = right_now.toString();
-        vid_name = "/" + vid_name + "_SeeMeTrain";
+        File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_DCIM), "Camera");
 
-//        Toast.makeText(this, "Video named " + vid_name,
-//                Toast.LENGTH_LONG).show();
+        // Create the storage directory if it does not exist
+        if (! mediaStorageDir.exists()){
+            if (! mediaStorageDir.mkdirs()){
+                Log.d("SeeMeTrain", "failed to create directory");
+                return null;
+            }
+        }
 
-        return vid_name;
+        // Create a media file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        File mediaFile;
+        if (type == MEDIA_TYPE_VIDEO){
+            mediaFile = new File(mediaStorageDir.getPath() + File.separator +
+                    "SMT"+ timeStamp + ".mp4");
+        } else {
+            return null;
+        }
+
+        return mediaFile;
+    }
+
+    private void galleryAddPic(Uri mCurrentPhotoPath) {
+        sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, mCurrentPhotoPath));
+        //Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
     }
 
 

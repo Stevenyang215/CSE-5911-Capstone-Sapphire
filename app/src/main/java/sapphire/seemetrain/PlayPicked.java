@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.MediaController;
@@ -44,11 +45,21 @@ public class PlayPicked extends Activity {
         button.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                // TODO Auto-generated method stub
-                Intent intent = new Intent();
+                Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 
                 intent.setType("video/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
+
+//                Uri selectedUri = Uri.parse(Environment.getExternalStorageDirectory() + "/DCIM/Camera");
+//                Intent intent = new Intent(Intent.ACTION_PICK);
+//                intent.setDataAndType(selectedUri, "video/*");
+//
+//                if (intent.resolveActivityInfo(getPackageManager(), 0) != null)
+//                {
+//                    startActivityForResult(intent, 1);
+//                }
+
+
 
                 startActivityForResult(Intent.createChooser(intent, "Complete action using"), PICK_FROM_GALLERY);
             }
