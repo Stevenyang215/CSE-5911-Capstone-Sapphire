@@ -26,6 +26,7 @@ public class AlarmStart extends Activity {
     String minuteS;
     String interval;
     Uri path;
+    boolean alarm;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -40,12 +41,18 @@ public class AlarmStart extends Activity {
         hourS = Integer.toString(global.getHour());
         minuteS = Integer.toString(global.getMinute());
         interval = Integer.toString(global.getInterval());
+        alarm=global.getAlarmStat();
 
-        Context context = this.getApplicationContext();
-        alarmMgr = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(context, AlarmVideoReceiver.class);
-        intent.setData(path);
-        alarmIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+        if(alarm) {
+            Context context = this.getApplicationContext();
+            alarmMgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+            Intent intent = new Intent(context, AlarmVideoReceiver.class);
+            intent.setData(path);
+            alarmIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+        }
+        else{
+            Toast.makeText(AlarmStart.this,"Alarm not set.",Toast.LENGTH_LONG).show();
+        }
 
     }
 
@@ -68,9 +75,9 @@ public class AlarmStart extends Activity {
 //        Toast.makeText(context, "Stop Time: " + hourS + ":" + minuteS + ".\nInterval: "
 //                + interval + "minutes.\n" + path.toString(), Toast.LENGTH_LONG).show();
 
-        //global.getMinute()
+        int minute=global.getMinute();
         alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
-                1000 * 60 * 1, alarmIntent); //TODO MINUTE
+                1000 * 60 * minute, alarmIntent); //TODO MINUTE
 
     }
 

@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -41,7 +42,7 @@ public class ViewHistory extends AppCompatActivity {
         history_linear_layout = (LinearLayout) findViewById(R.id.HistView);
         title = (TextView) findViewById(R.id.Title);
         clear = (Button) findViewById(R.id.clear_history);
-        TextView lplayed = (TextView) findViewById(R.id.lastplayed);
+        //TextView lplayed = (TextView) findViewById(R.id.lastplayed);
         TextView st = (TextView) findViewById(R.id.starttime);
         TextView intval = (TextView) findViewById(R.id.interval);
         //TextView endtime = (TextView) findViewById(R.id.endtime);
@@ -105,11 +106,18 @@ public class ViewHistory extends AppCompatActivity {
             history_linear_layout.addView(newView);
         } else {
             //lplayed.setText("No History Yet. Create a playlist to start");
+            Toast.makeText(ViewHistory.this, "No History Yet.Create a playlist to start", Toast.LENGTH_LONG).show();
         }
 
     }
 
     public void clearHistory(View view){
+        TextView st = (TextView) findViewById(R.id.starttime);
+        TextView intval = (TextView) findViewById(R.id.interval);
+        intval.setText("0");
+        st.setText("0");
+        final SMTApplication global = (SMTApplication) getApplication();
+        global.alarmoff();
         SharedPreferences pref = getSharedPreferences(historyPref,Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
         int i = 1;

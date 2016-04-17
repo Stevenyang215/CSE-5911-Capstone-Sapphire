@@ -89,6 +89,7 @@ public class NewScheduleActivity extends AppCompatActivity {
         global.setHour(time_hour);
         global.setMinute(time_minute);
         global.setCount(0);
+        global.setAlarm();
     }
 
 
