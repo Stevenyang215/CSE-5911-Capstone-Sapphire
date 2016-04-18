@@ -117,11 +117,7 @@ public class ViewHistory extends AppCompatActivity {
     public void clearHistory(View view){
         final Context context = this;
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-
-        // set title
         alertDialogBuilder.setTitle("Are you sure?");
-
-        // set dialog message
         alertDialogBuilder
                 .setMessage("Click yes to exit!")
                 .setCancelable(false)
@@ -144,7 +140,7 @@ public class ViewHistory extends AppCompatActivity {
                         }
                         editor.commit();
                         ViewHistory.this.recreate();
-                        ViewHistory.this.finish();
+                        //ViewHistory.this.finish();
                     }
                 })
                 .setNegativeButton("No",new DialogInterface.OnClickListener() {
@@ -154,11 +150,7 @@ public class ViewHistory extends AppCompatActivity {
                         dialog.cancel();
                     }
                 });
-
-        // create alert dialog
         AlertDialog alertDialog = alertDialogBuilder.create();
-
-        // show it
         alertDialog.show();
 
     }
