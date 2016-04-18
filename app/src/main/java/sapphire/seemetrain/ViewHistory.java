@@ -13,6 +13,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 
 import org.w3c.dom.Text;
 
@@ -112,24 +115,44 @@ public class ViewHistory extends AppCompatActivity {
     }
 
     public void clearHistory(View view){
-        TextView st = (TextView) findViewById(R.id.starttime);
-        TextView intval = (TextView) findViewById(R.id.interval);
-        intval.setText("0");
-        st.setText("0");
-        final SMTApplication global = (SMTApplication) getApplication();
-        global.alarmoff();
-        SharedPreferences pref = getSharedPreferences(historyPref,Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = pref.edit();
-        int i = 1;
-        String key = "video" + i + "count";
-        while(pref.contains(key)){
-            editor.putInt(key,0);
-            i++;
-            key = "video" + i + "count";
-        }
+        final Context context = this;
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+        alertDialogBuilder.setTitle("Are you sure?");
+        alertDialogBuilder
+                .setMessage("Click yes to exit!")
+                .setCancelable(false)
+                .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        TextView st = (TextView) findViewById(R.id.starttime);
+                        TextView intval = (TextView) findViewById(R.id.interval);
+                        intval.setText("0");
+                        st.setText("0");
+                        final SMTApplication global = (SMTApplication) getApplication();
+                        global.alarmoff();
+                        SharedPreferences pref = getSharedPreferences(historyPref,Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = pref.edit();
+                        int i = 1;
+                        String key = "video" + i + "count";
+                        while(pref.contains(key)){
+                            editor.putInt(key,0);
+                            i++;
+                            key = "video" + i + "count";
+                        }
+                        editor.commit();
+                        ViewHistory.this.recreate();
+                        //ViewHistory.this.finish();
+                    }
+                })
+                .setNegativeButton("No",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        // if this button is clicked, just close
+                        // the dialog box and do nothing
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
 
-        editor.commit();
-        this.recreate();
     }
 
 }
