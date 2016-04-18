@@ -43,7 +43,10 @@ public class CreateAccount extends Activity {
         String pass = passField.getText().toString();
         String confirm = confirmField.getText().toString();
 
-        if(pass.equals(confirm)){
+        if(name.equals("")){
+            Toast.makeText(CreateAccount.this,"Please enter a user name",Toast.LENGTH_LONG).show();
+        }
+        else if(pass.equals(confirm)){
             //Write to shared prefs
             if(pass.equals("")){
                 Toast.makeText(CreateAccount.this,"Please enter a password",Toast.LENGTH_LONG).show();

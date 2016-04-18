@@ -43,16 +43,17 @@ public class AlarmStart extends Activity {
         interval = Integer.toString(global.getInterval());
         alarm=global.getAlarmStat();
 
-//        if(alarm) {
+        if(alarm) {
             Context context = this.getApplicationContext();
             alarmMgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
             Intent intent = new Intent(context, AlarmVideoReceiver.class);
             intent.setData(path);
             intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             alarmIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
-//        }
-//        else{
-//        }
+        }
+        else{
+            Toast.makeText(AlarmStart.this, "No Schedule Yet.Create a Schedule to start", Toast.LENGTH_LONG).show();
+        }
 
     }
 
