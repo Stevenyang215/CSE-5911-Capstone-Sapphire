@@ -70,7 +70,10 @@ public class AlarmPlay extends Activity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode != RESULT_OK) return;
+        final SMTApplication global = (SMTApplication) getApplication();
+        // Set the alarm to start in 1 minute
+        boolean alarm=global.getAlarmStat();
+        if ((resultCode != RESULT_OK)||(!alarm)) return;
 
         if (requestCode == 1) {
 //            Uri mVideoURI = data.getData();

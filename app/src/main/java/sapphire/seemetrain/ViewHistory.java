@@ -1,5 +1,6 @@
 package sapphire.seemetrain;
 
+import android.app.AlarmManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -133,6 +134,7 @@ public class ViewHistory extends AppCompatActivity {
                         global.setInterval(0);
                         global.setHour(0);
                         global.setMinute(0);
+                        //AlarmStart.cancel_alarm();
                         SharedPreferences pref = getSharedPreferences(historyPref, Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = pref.edit();
                         int i = 1;
