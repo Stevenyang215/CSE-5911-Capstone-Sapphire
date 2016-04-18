@@ -39,6 +39,7 @@ public class AlarmPlay extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_alarm_play); //TODO Fix playback
 
+
         videoView = (VideoView) findViewById(R.id.play_alarm);
 
         final SMTApplication global = (SMTApplication) getApplication();

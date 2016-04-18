@@ -107,7 +107,8 @@ public class ViewHistory extends AppCompatActivity {
             TextView newView = new TextView(this);
             newView.setText(contentForHistory);
             history_linear_layout.addView(newView);
-        } else {
+        }
+        else {
             //lplayed.setText("No History Yet. Create a playlist to start");
             Toast.makeText(ViewHistory.this, "No History Yet.Create a playlist to start", Toast.LENGTH_LONG).show();
         }
@@ -129,6 +130,9 @@ public class ViewHistory extends AppCompatActivity {
                         st.setText("0");
                         final SMTApplication global = (SMTApplication) getApplication();
                         global.alarmoff();
+                        global.setInterval(0);
+                        global.setHour(0);
+                        global.setMinute(0);
                         SharedPreferences pref = getSharedPreferences(historyPref, Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = pref.edit();
                         int i = 1;
