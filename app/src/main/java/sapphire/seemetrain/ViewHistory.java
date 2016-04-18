@@ -119,7 +119,7 @@ public class ViewHistory extends AppCompatActivity {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
         alertDialogBuilder.setTitle("Are you sure?");
         alertDialogBuilder
-                .setMessage("Click yes to exit!")
+                //.setMessage("Click yes to exit!")
                 .setCancelable(false)
                 .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,int id) {

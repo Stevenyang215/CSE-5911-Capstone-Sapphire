@@ -54,13 +54,6 @@ public class addVideoFragment extends Fragment {
         seekBar = (SeekBar) view.findViewById(R.id.seekBar);
         seekBarOut = (TextView) view.findViewById(R.id.seekBarOut);
 
-//        saveTime.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                saveSchedule(v);
-//            }
-//        });
-
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             int progressToChange = 1;
             @Override

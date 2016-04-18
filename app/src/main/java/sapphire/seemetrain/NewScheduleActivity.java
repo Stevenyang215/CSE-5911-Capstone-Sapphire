@@ -42,18 +42,6 @@ public class NewScheduleActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.fragment_container, add_Video_Fragment);
         fragmentTransaction.commit();
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                addVideoFragment.save(view);
-//                Snackbar.make(view, "Save Success", Snackbar.LENGTH_INDEFINITE)
-//                        .setAction("Action", null).show();
-//            }
-//        });
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
 
         //update the history view sharedPreference
         histPref = getSharedPreferences(historyPref, Context.MODE_PRIVATE);
