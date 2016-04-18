@@ -111,7 +111,8 @@
             android:name=".AlarmVideoService"
             android:label="@string/title_activity_alarm_video"
             android:parentActivityName=".AlarmStart"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:exported="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="sapphire.seemetrain.HomeScreen" />

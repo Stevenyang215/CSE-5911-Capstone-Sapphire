@@ -105,13 +105,5 @@ public class PlaylistFragment extends Fragment {
         }
 
     }
-
-//    public void getCommandDialog() {
-//        DialogFragment newFragment = new CommandNameDialog();
-//        FragmentManager frgmgr = getSupportFragmentManager();
-//        newFragment.show(getChildFragmentManager(), "command");
-//        newFragment.show(
-//    }
-
 }
 

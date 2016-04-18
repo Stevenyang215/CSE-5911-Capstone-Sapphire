@@ -26,7 +26,7 @@ import java.io.IOException;
 /**
  * File Created by Joseph
  */
-public class AlarmPlay extends Activity implements SurfaceHolder.Callback {
+public class AlarmPlay extends Activity {
 
     private VideoView videoView;
     private SharedPreferences sharedPrefs;
@@ -51,51 +51,21 @@ public class AlarmPlay extends Activity implements SurfaceHolder.Callback {
         int count = sharedPrefs.getInt("video" + current + "count", 0);
         SharedPreferences.Editor editor = sharedPrefs.edit();
         editor.putInt("video" + current + "count", count + 1);
-        if (sharedPrefs.getInt("lastVid", 5) < current + 1){
+        if (sharedPrefs.getInt("lastVid", 5) < current + 1) {
             editor.putInt("currentVid", 1);
         } else {
             editor.putInt("currentVid", current + 1);
         }
         editor.commit();
 
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
         Toast.makeText(AlarmPlay.this, "Video #" + current + " counter incremented", Toast.LENGTH_LONG).show();
 
-        surfaceHolder = videoView.getHolder();
-        surfaceHolder.addCallback(this);
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(path));
+        intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        intent.setDataAndType(Uri.parse(path), "video/mp4");
+        startActivity(intent);
 
-        finish();
-        // SharedPreferences.Editor editor = sharedPrefs.edit();
-        // editor.putString("video1path", path);
-        // editor.commit();
-
-//        videoView.setVideoPath(path2);
-//        videoView.start();
-
-        final Intent intent = new Intent(this, LoadActivity.class);
-//        button.setOnClickListener(new View.OnClickListener() {
-
-//            public void onClick(View v) {
-//                sharedPrefs = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-//                String path2 = sharedPrefs.getString("video1path", "def");
-//                videoView.setVideoPath(path2);
-//                videoView.start();
-
-//                Intent intent = new Intent();
-//
-//                intent.setType("video/*");
-//                intent.setAction(Intent.ACTION_GET_CONTENT);
-//
-//                startActivityForResult(Intent.createChooser(intent, "Complete action using"), 1);
-
-//                startActivityForResult(intent, 1);
-            }
-//        });
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -125,63 +95,7 @@ public class AlarmPlay extends Activity implements SurfaceHolder.Callback {
                 e.printStackTrace();
             }
             mediaPlayer.start();
-
-//            videoView.setVideoPath(path2);
-            //startActivity(actIntent);
-
-           // SharedPreferences.Editor editor = sharedPrefs.edit();
-           // editor.putString("video1path", path);
-           // editor.commit();
-//            videoView.setVideoPath(path2);
-//            videoView.start();
         }
 
     }
-
-    @Override
-    public void surfaceCreated(SurfaceHolder holder) {
-//        sharedPrefs = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-//        String path2 = sharedPrefs.getString("video1path", "def");
-//        videoView.setVideoPath(path2);
-//        videoView.start();
-    }
-
-    @Override
-    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-
-    }
-
-    @Override
-    public void surfaceDestroyed(SurfaceHolder holder) {
-
-    }
 }
-        ////videoView.setVideoPath(path);
-
-        //if (global.getCount() < 1) {
-            //String pathName = global.getPathName();
-            //setContentView(R.layout.content_alarm_play);
-
-        //} else {
-            //String pathName = global.getPathName();
-            //setContentView(R.layout.content_alarm_play);
-            //videoView.setVideoURI(getIntent().getData());
-
-            //Context context = this.getApplicationContext();
-//            AlarmManager alarmMgr = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
-//            PendingIntent alarmIntent;
-//            Intent intent = new Intent(context, AlarmVideoService.class);
-//            alarmIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
-//
-//            alarmMgr.cancel(alarmIntent);
-
-//        }
-        ////videoView.start();
-//        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-//            @Override
-//            public void onPrepared(MediaPlayer mp) {
-//                videoView.setBackgroundColor(Color.TRANSPARENT);
-//            }
-//        });
-//    }
-//}

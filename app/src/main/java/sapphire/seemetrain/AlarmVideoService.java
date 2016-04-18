@@ -29,46 +29,32 @@ public class AlarmVideoService extends IntentService {
 
         Context context = getApplicationContext();
 
-        //Toast.makeText(AlarmVideoService.this, pathName, Toast.LENGTH_LONG).show();
-        Intent i = new Intent(getApplicationContext(), AlarmPlay.class);
-        //i.setClass(this, AlarmPlay.class);
+        final SMTApplication global = (SMTApplication) getApplication();
+
+        sharedPrefs = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        int current = 0;
+        current = sharedPrefs.getInt("currentVid", 1);
+        String path = sharedPrefs.getString("video" + current + "path", "def");
+        int count = sharedPrefs.getInt("video" + current + "count", 0);
+        SharedPreferences.Editor editor = sharedPrefs.edit();
+        editor.putInt("video" + current + "count", count + 1);
+        if (sharedPrefs.getInt("lastVid", 5) < current + 1) {
+            editor.putInt("currentVid", 1);
+        } else {
+            editor.putInt("currentVid", current + 1);
+        }
+        editor.commit();
+
+        ////Intent i = new Intent(getApplicationContext(), AlarmPlay.class);
+        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(path));
+        i.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        intent.setDataAndType(Uri.parse(path), "video/mp4");
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        i.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        i.setData(intent.getData());
-        //i.setDataAndType(Uri.parse(pathName), "video/mp4");
 
 
         startActivity(i);
 
-
-//        sharedPrefs = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-//        String path2 = sharedPrefs.getString("video1path", "def");
-//        Intent actIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(path2));
-//        actIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//        actIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-//        startActivity(actIntent);
-
         AlarmVideoReceiver.completeWakefulIntent(intent);
-
-//        final SMTApplication global = (SMTApplication) getApplication();
-//        if (global.getCount() < 1) {
-//            String pathName = global.getPathName();
-//            setContentView(R.layout.content_alarm_play);
-//            videoView.setVideoPath(pathName);
-//        } else {
-//            String pathName = global.getPathName();
-//            setContentView(R.layout.content_alarm_play);
-//            videoView.setVideoPath(pathName);
-//
-//            //Context context = this.getApplicationContext();
-//            AlarmManager alarmMgr = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
-//            PendingIntent alarmIntent;
-//            Intent intent = new Intent(context, AlarmVideoService.class);
-//            alarmIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
-//
-//            alarmMgr.cancel(alarmIntent);
-//
-//        }
 
     }
 }

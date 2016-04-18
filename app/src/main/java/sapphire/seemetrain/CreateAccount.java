@@ -47,17 +47,18 @@ public class CreateAccount extends Activity {
             //Write to shared prefs
             if(pass.equals("")){
                 Toast.makeText(CreateAccount.this,"Please enter a password",Toast.LENGTH_LONG).show();
+            } else {
+                SharedPreferences.Editor editor = sharedPrefs.edit();
+                editor.putString("nameKey", name);
+                editor.putString("passKey", pass);
+                editor.commit();
+
+                SMTAccount myAccount = new SMTAccount(name, pass);
+
+                myAccount.setLoggedIn(true);
+                Intent intent = new Intent(this, HomeScreen.class);
+                startActivity(intent);
             }
-            SharedPreferences.Editor editor = sharedPrefs.edit();
-            editor.putString("nameKey", name);
-            editor.putString("passKey", pass);
-            editor.commit();
-
-            SMTAccount myAccount = new SMTAccount(name, pass);
-
-            myAccount.setLoggedIn(true);
-            Intent intent = new Intent(this,HomeScreen.class);
-            startActivity(intent);
 
         }
         else{

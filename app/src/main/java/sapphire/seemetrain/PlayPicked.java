@@ -33,14 +33,6 @@ public class PlayPicked extends Activity {
         button = (Button) findViewById(R.id.button);
         videoView = (VideoView) findViewById(R.id.video_view);
         sharedPrefs = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        //Toast.makeText(PlayPicked.this, getIntent().getData().toString(), Toast.LENGTH_SHORT).show();
-
-
-        //videoView.setVideoPath("http://www.ebookfrenzy.com/android_book/movie.mp4");
-        //videoView.start();
-        //videoView.setVideoURI(getIntent().getData());
-        //videoView.requestFocus();
-        //videoView.start();
 
         button.setOnClickListener(new View.OnClickListener() {
 
@@ -49,17 +41,6 @@ public class PlayPicked extends Activity {
 
                 intent.setType("video/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
-
-//                Uri selectedUri = Uri.parse(Environment.getExternalStorageDirectory() + "/DCIM/Camera");
-//                Intent intent = new Intent(Intent.ACTION_PICK);
-//                intent.setDataAndType(selectedUri, "video/*");
-//
-//                if (intent.resolveActivityInfo(getPackageManager(), 0) != null)
-//                {
-//                    startActivityForResult(intent, 1);
-//                }
-
-
 
                 startActivityForResult(Intent.createChooser(intent, "Complete action using"), PICK_FROM_GALLERY);
             }

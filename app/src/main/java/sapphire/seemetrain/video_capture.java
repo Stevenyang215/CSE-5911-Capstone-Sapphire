@@ -71,7 +71,7 @@ public class video_capture extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         if(requestCode == REQUEST_VIDEO_CAPTURE && resultCode == RESULT_OK){
             if (resultCode == RESULT_OK) {
-                Toast.makeText(this, "Video saved to:", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Video Saved", Toast.LENGTH_LONG).show();
                 //Uri uri = data.getData();
                 //galleryAddPic(uri);
             } else if (resultCode == RESULT_CANCELED) {
@@ -113,7 +113,6 @@ public class video_capture extends AppCompatActivity {
 
     private void galleryAddPic(Uri mCurrentPhotoPath) {
         sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, mCurrentPhotoPath));
-        //Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
     }
 
 
