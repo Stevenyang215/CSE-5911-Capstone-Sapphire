@@ -45,6 +45,9 @@ public class CreateAccount extends Activity {
 
         if(pass.equals(confirm)){
             //Write to shared prefs
+            if(pass.equals("")){
+                Toast.makeText(CreateAccount.this,"Please enter a password",Toast.LENGTH_LONG).show();
+            }
             SharedPreferences.Editor editor = sharedPrefs.edit();
             editor.putString("nameKey", name);
             editor.putString("passKey", pass);

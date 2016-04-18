@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/CSE-5911-Capstone-Sapphire.iml" filepath="$PROJECT_DIR$/CSE-5911-Capstone-Sapphire.iml" />
       <module fileurl="file://$PROJECT_DIR$/SeeMeTrain.iml" filepath="$PROJECT_DIR$/SeeMeTrain.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
