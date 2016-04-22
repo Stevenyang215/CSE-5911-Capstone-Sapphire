@@ -1,66 +1,55 @@
 package sapphire.seemetrain;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.Uri;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
-import android.widget.Button;
 import android.content.Intent;
-import android.widget.TextView;
-
-//TODO Need unit test cases
 
 public class HomeScreen extends AppCompatActivity {
 
-    private Button record_button;
-    private Button new_schedule;
-    private Button play_button;
-    private Button view_history;
     private SharedPreferences sharedPrefs;
-    private TextView textView;
     private String MyPREFERENCES = "MyPrefs";
-    //TODO Create standard button format/look
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
+        setContentView(R.layout.content_home_screen);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
+        toolbar.setTitle("SeeMeTrain");
+        toolbar.setTitleTextColor(Color.WHITE);
         sharedPrefs = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         if(!sharedPrefs.contains("passKey")){
             Intent intent = new Intent(this,CreateAccount.class);
             startActivity(intent);
         }
 
-        setContentView(R.layout.content_home_screen);
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 
-        record_button = (Button) findViewById(R.id.record_button);
-        new_schedule = (Button) findViewById(R.id.new_schedule);
-        view_history = (Button) findViewById(R.id.history_view);
 
-        Window window = this.getWindow();
-        window.setStatusBarColor(this.getResources().getColor(R.color.colorPrimary));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = this.getWindow();
+            window.setStatusBarColor(this.getResources().getColor(R.color.colorPrimary));
+        }
 
     }
 
     public void About(View view){
-        Intent intent = new Intent(this,About.class);
+        Intent intent = new Intent(this,AboutActivity.class);
         startActivity(intent);
     }
     public void record_video(View view){
-        Intent intent = new Intent(this,video_capture.class);
+        Intent intent = new Intent(this,VideoCaptureActivity.class);
         startActivity(intent);
     }
 
@@ -71,14 +60,6 @@ public class HomeScreen extends AppCompatActivity {
 
     public void new_playlist_set_up(View view){
         Intent intent = new Intent(this,NewPlaylistActivity.class);
-        startActivity(intent);
-    }
-
-    public void play_video(View view){
-        final SMTApplication global = (SMTApplication) getApplication();
-        Uri uri = global.getPath();
-        Intent intent = new Intent(this,PlayPicked.class);
-        intent.setData(uri);
         startActivity(intent);
     }
 
@@ -94,10 +75,19 @@ public class HomeScreen extends AppCompatActivity {
     }
 
 
+    /** Old activity used to play videos/for debugging: */
+//    public void play_video(View view){
+//        final SMTApplication global = (SMTApplication) getApplication();
+//        Uri uri = global.getPath();
+//        Intent intent = new Intent(this,PlayPicked.class);
+//        intent.setData(uri);
+//        startActivity(intent);
+//    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_home_screen, menu);
         return true;
     }

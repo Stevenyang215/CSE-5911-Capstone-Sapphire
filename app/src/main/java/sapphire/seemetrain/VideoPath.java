@@ -4,6 +4,8 @@ import android.net.Uri;
 
 /**
  * File Created by Joseph
+ *
+ * Handles videos as an object
  */
 public class VideoPath {
 

@@ -2,6 +2,7 @@ package sapphire.seemetrain;
 
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -21,7 +22,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 
-public class video_capture extends AppCompatActivity {
+public class VideoCaptureActivity extends AppCompatActivity {
 
     public static final int REQUEST_VIDEO_CAPTURE = 1;
     public static final int MEDIA_TYPE_VIDEO = 2;
@@ -84,7 +85,7 @@ public class video_capture extends AppCompatActivity {
         }
     }
 
-    /** Create a File for saving an image or video */
+    /** Create a File for saving a video */
     private static File getOutputMediaFile(int type){
 
         File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
@@ -111,6 +112,9 @@ public class video_capture extends AppCompatActivity {
         return mediaFile;
     }
 
+
+    /** Add a video to device "Gallery" */
+    //Doesn't work for all API for some reason, so this is unused for now
     private void galleryAddPic(Uri mCurrentPhotoPath) {
         sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, mCurrentPhotoPath));
     }

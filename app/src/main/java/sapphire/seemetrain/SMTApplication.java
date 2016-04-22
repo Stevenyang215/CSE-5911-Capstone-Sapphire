@@ -5,6 +5,8 @@ import android.net.Uri;
 
 /**
  * File Created by Joseph
+ *
+ * Singleton class used to save some app-wide information
  */
 public class SMTApplication extends Application {
 

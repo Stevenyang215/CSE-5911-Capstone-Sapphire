@@ -28,8 +28,6 @@ public class CreateAccount extends Activity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_account_screen);
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
 
         create_button = (Button) findViewById(R.id.create_button);
         nameField = (EditText) findViewById(R.id.nameText);
@@ -42,32 +40,27 @@ public class CreateAccount extends Activity {
         String name = nameField.getText().toString();
         String pass = passField.getText().toString();
         String confirm = confirmField.getText().toString();
+        int result = AccountValidator.initializeAccount(name,pass,confirm,getApplicationContext());
 
-        if(name.equals("")){
-            Toast.makeText(CreateAccount.this,"Please enter a user name",Toast.LENGTH_LONG).show();
-        }
-        else if(pass.equals(confirm)){
-            //Write to shared prefs
-            if(pass.equals("")){
-                Toast.makeText(CreateAccount.this,"Please enter a password",Toast.LENGTH_LONG).show();
-            } else {
-                SharedPreferences.Editor editor = sharedPrefs.edit();
-                editor.putString("nameKey", name);
-                editor.putString("passKey", pass);
-                editor.commit();
-
+        switch (result) {
+            case 1: //Success -> go to home screen
                 SMTAccount myAccount = new SMTAccount(name, pass);
-
                 myAccount.setLoggedIn(true);
                 Intent intent = new Intent(this, HomeScreen.class);
                 startActivity(intent);
-            }
-
+                break;
+            case 2:
+                Toast.makeText(CreateAccount.this, "Passwords do not match", Toast.LENGTH_LONG).show();
+                break;
+            case 3:
+                Toast.makeText(CreateAccount.this, "Account and Password are required fields", Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                Toast.makeText(CreateAccount.this, "ERROR", Toast.LENGTH_SHORT).show();
+                break;
         }
-        else{
-            Toast.makeText(CreateAccount.this,"Passwords do not match",Toast.LENGTH_LONG).show();
-        }
-
     }
+
+
 }
 

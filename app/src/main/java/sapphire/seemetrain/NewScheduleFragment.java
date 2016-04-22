@@ -31,18 +31,14 @@ import java.util.Calendar;
 /**
  * Created by zijiangyang on 2/15/16.
  */
-public class addVideoFragment extends Fragment {
+public class NewScheduleFragment extends Fragment {
 
     private static final int SELECT_VIDEO = 1;
 
-    private Button saveTime;
-    private Button selectVideo;
     private TimePicker timePicker;
     private SeekBar seekBar;
     private TextView seekBarOut;
-    Calendar calendar;
     static String time;
-    private TextView txtView;
     public static int interval;
 
     private String selectedVideoPath;
@@ -94,9 +90,7 @@ public class addVideoFragment extends Fragment {
         Context context = getContext();
         final SMTApplication global = (SMTApplication) getActivity().getApplication();
         if(resultCode == Activity.RESULT_OK) {
-            //Toast.makeText(context, "2", Toast.LENGTH_LONG).show();
             if (requestCode == SELECT_VIDEO) {
-                //Toast.makeText(context, "3", Toast.LENGTH_LONG).show();
                 global.setPath(data.getData());
                 selectedVideoPath = getPath(data.getData());
 
@@ -109,7 +103,6 @@ public class addVideoFragment extends Fragment {
 
                         } else {
                                 Toast.makeText(context, selectedVideoPath, Toast.LENGTH_LONG).show();
-                                txtView.setText(selectedVideoPath);
                         }
                 } catch (Exception e) {
                         e.printStackTrace();
@@ -122,34 +115,28 @@ public class addVideoFragment extends Fragment {
     public void saveSchedule(View v) {
 
         int time_hour = timePicker.getCurrentHour();
-        int time_minute = timePicker.getCurrentMinute(); //TODO fix single digit minute error
+        int time_minute = timePicker.getCurrentMinute();
         time = Integer.toString(time_hour);
         time = time + Integer.toString(time_minute);
 
 
 
         final SMTApplication global = (SMTApplication) getActivity().getApplication();
-//        global.setPath(data.getData);
         global.setInterval(interval);
         global.setHour(time_hour);
         global.setMinute(time_minute);
         global.setCount(0);
-
-//        Context context = getContext();
-//        Toast.makeText(context, "Interval \n" + interval, Toast.LENGTH_LONG).show();
-
-
     }
 
     private String getPath(Uri uri){
-            String[] projection = {MediaStore.Images.Media.DATA};
-            Cursor cursor = getActivity().getContentResolver().query(uri, projection, null, null, null);
-            if(cursor!=null){
-                    int column_index = cursor.getColumnIndexOrThrow(MediaStore.Video.Media.DATA);
-                    cursor.moveToFirst();
-                    return cursor.getString(column_index);
-            }
-            else return null;
+        String[] projection = {MediaStore.Images.Media.DATA};
+        Cursor cursor = getActivity().getContentResolver().query(uri, projection, null, null, null);
+        if(cursor!=null){
+                int column_index = cursor.getColumnIndexOrThrow(MediaStore.Video.Media.DATA);
+                cursor.moveToFirst();
+                return cursor.getString(column_index);
+        }
+        else return null;
     }
 }
 

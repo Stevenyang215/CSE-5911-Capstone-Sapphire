@@ -28,26 +28,19 @@ import java.io.IOException;
  */
 public class AlarmPlay extends Activity {
 
-    private VideoView videoView;
     private SharedPreferences sharedPrefs;
     private String MyPREFERENCES = "MyPrefs";
-    SurfaceHolder surfaceHolder;
-    MediaPlayer mp;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_alarm_play); //TODO Fix playback
-
-
-        videoView = (VideoView) findViewById(R.id.play_alarm);
+        setContentView(R.layout.content_alarm_play);
 
         final SMTApplication global = (SMTApplication) getApplication();
         Context context = getApplicationContext();
 
         sharedPrefs = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        int current = 0;
-        current = sharedPrefs.getInt("currentVid", 1);
+        int current = sharedPrefs.getInt("currentVid", 1);
         String path = sharedPrefs.getString("video" + current + "path", "def");
         int count = sharedPrefs.getInt("video" + current + "count", 0);
         SharedPreferences.Editor editor = sharedPrefs.edit();
@@ -71,26 +64,16 @@ public class AlarmPlay extends Activity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         final SMTApplication global = (SMTApplication) getApplication();
-        // Set the alarm to start in 1 minute
         boolean alarm=global.getAlarmStat();
         if ((resultCode != RESULT_OK)||(!alarm)) return;
 
         if (requestCode == 1) {
-//            Uri mVideoURI = data.getData();
-//            String path = mVideoURI.toString();
-//            TextView text = (TextView) findViewById(R.id.outText);
-//            String y = path + " from button";
-//            text.setText(y);
-
             sharedPrefs = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-            String path2 = sharedPrefs.getString("video1path", "def");
-
             MediaPlayer mediaPlayer = new MediaPlayer();
             try {
                 Uri fileUri = ContentUris.withAppendedId(MediaStore.Video.Media.INTERNAL_CONTENT_URI, 166);
                 mediaPlayer.setDataSource(getApplicationContext(), fileUri);
             } catch (IOException e) {
-                Log.w("asgsdg", "adsgsdgvs");
                 e.printStackTrace();
             }
             try {

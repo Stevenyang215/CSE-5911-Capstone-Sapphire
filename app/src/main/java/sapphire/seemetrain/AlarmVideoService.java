@@ -1,17 +1,11 @@
 package sapphire.seemetrain;
 
-import android.app.Activity;
-import android.app.AlarmManager;
 import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.widget.Toast;
-import android.widget.VideoView;
-import java.util.Calendar;
-import java.util.SimpleTimeZone;
-import java.util.SortedMap;
+
 
 /**
  * File Created by Joseph
@@ -32,8 +26,7 @@ public class AlarmVideoService extends IntentService {
         final SMTApplication global = (SMTApplication) getApplication();
 
         sharedPrefs = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        int current = 0;
-        current = sharedPrefs.getInt("currentVid", 1);
+        int current = sharedPrefs.getInt("currentVid", 1);
         String path = sharedPrefs.getString("video" + current + "path", "def");
         int count = sharedPrefs.getInt("video" + current + "count", 0);
         SharedPreferences.Editor editor = sharedPrefs.edit();
@@ -45,7 +38,6 @@ public class AlarmVideoService extends IntentService {
         }
         editor.commit();
 
-        ////Intent i = new Intent(getApplicationContext(), AlarmPlay.class);
         Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(path));
         i.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         intent.setDataAndType(Uri.parse(path), "video/mp4");

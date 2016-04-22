@@ -43,7 +43,6 @@ public class PlaylistFragment extends Fragment {
         addVideo.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 Intent intent = new Intent();
 
                 intent.setType("video/*");
@@ -74,8 +73,7 @@ public class PlaylistFragment extends Fragment {
 
         if (requestCode == PICK_FROM_GALLERY) {
 
-            //getCommandDialog();
-
+            //Add a new video to the UI list:
             videoNum++;
             Uri mVideoURI = data.getData();
             VideoPath nextVid = new VideoPath("abc" + videoNum, mVideoURI);
@@ -88,7 +86,6 @@ public class PlaylistFragment extends Fragment {
             params.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
             TextView textView = new TextView(this.getActivity());
             textView.setText("Video #" + videoNum);
-            //textView.generateViewId();
             textView.setLayoutParams(params);
 
             params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);

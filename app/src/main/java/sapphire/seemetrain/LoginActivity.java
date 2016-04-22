@@ -1,5 +1,6 @@
 package sapphire.seemetrain;
 
+import android.accounts.Account;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -25,8 +26,6 @@ public class LoginActivity extends Activity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_account_screen);
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
 
         login_button = (Button) findViewById(R.id.login_button);
         nameField = (EditText) findViewById(R.id.nameText);
@@ -37,8 +36,8 @@ public class LoginActivity extends Activity {
     public void authAccount(View view) throws ClassNotFoundException {
         String pass = passField.getText().toString();
 
-        //Read shared prefs
-        if (pass.equals(sharedPrefs.getString("passKey", "admin"))) {
+        //Validate
+        if (AccountValidator.checkPass(pass, getApplicationContext())) {
             Toast.makeText(LoginActivity.this, "Password Correct", Toast.LENGTH_LONG).show();
 
             Bundle extras = getIntent().getExtras();

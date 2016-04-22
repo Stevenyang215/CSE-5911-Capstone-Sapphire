@@ -17,6 +17,8 @@ import android.widget.VideoView;
 
 /**
  * File Created by Joseph
+ *
+ * This screen is only used to play a picked video. Only for debugging/Not accessible for now
  */
 public class PlayPicked extends Activity {
     private VideoView videoView;

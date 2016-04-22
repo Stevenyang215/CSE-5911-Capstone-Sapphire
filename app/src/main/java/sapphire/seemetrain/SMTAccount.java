@@ -1,10 +1,14 @@
 package sapphire.seemetrain;
 
+/**
+ *
+ * Account singleton
+ */
 public class SMTAccount {
 
-    private String accName = "Trainer";
-    //private Schedule currentSchedule = new Schedule("empty");
-    private String accPass;
+    private static String accName = "Trainer";
+    private static String accPass;
+    private static boolean loggedIn = false;
 
     public SMTAccount(String name, String pass) {
         accName = name;
@@ -18,8 +22,6 @@ public class SMTAccount {
     public void setLoggedIn(boolean loggedIn) {
         this.loggedIn = loggedIn;
     }
-
-    private boolean loggedIn = false;
 
     public String getAccName() {
         return accName;

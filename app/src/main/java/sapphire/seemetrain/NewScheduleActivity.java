@@ -2,6 +2,7 @@ package sapphire.seemetrain;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
@@ -9,6 +10,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -35,11 +37,14 @@ public class NewScheduleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_schedule);
         title = (TextView) findViewById(R.id.new_schedule);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("New Schedule");
+        toolbar.setTitleTextColor(Color.WHITE);
         //add = (Button) findViewById(R.id.add);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        addVideoFragment add_Video_Fragment = new addVideoFragment();
-        fragmentTransaction.replace(R.id.fragment_container, add_Video_Fragment);
+        NewScheduleFragment newScheduleFrament = new NewScheduleFragment();
+        fragmentTransaction.replace(R.id.fragment_container, newScheduleFrament);
         fragmentTransaction.commit();
 
 
@@ -76,8 +81,6 @@ public class NewScheduleActivity extends AppCompatActivity {
 
 
         final SMTApplication global = (SMTApplication) getApplication();
-//        global.setPath(data.getData);
-//        global.setInterval(addVideoFragment.getInterval());
         global.setHour(time_hour);
         global.setMinute(time_minute);
         global.setCount(0);
