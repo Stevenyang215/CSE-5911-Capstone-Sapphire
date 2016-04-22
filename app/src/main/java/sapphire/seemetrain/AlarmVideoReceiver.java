@@ -15,7 +15,8 @@ public class AlarmVideoReceiver extends WakefulBroadcastReceiver {
     public void onReceive(Context context, Intent intent){
         Intent service = new Intent(context, AlarmVideoService.class);
         service.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        service.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        startWakefulService(context, service);
+        service.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        context.startActivity(intent);
+        //startWakefulService(context, service);
     }
 }

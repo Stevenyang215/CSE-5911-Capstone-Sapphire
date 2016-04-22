@@ -55,6 +55,10 @@ public class NewScheduleActivity extends AppCompatActivity {
 
         String localTime = date.format(currentLocalTime);
         editor.putString(content,localTime);
+        final SMTApplication global = (SMTApplication) getApplication();
+        global.setAlarm();
+        boolean alarm=global.getAlarmStat();
+        //Toast.makeText(NewScheduleActivity.this, "Alarm"+alarm, Toast.LENGTH_LONG).show();
 
     }
 
@@ -77,7 +81,7 @@ public class NewScheduleActivity extends AppCompatActivity {
         global.setHour(time_hour);
         global.setMinute(time_minute);
         global.setCount(0);
-        global.setAlarm();
+
     }
 
 

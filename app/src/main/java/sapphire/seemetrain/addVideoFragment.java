@@ -80,6 +80,7 @@ public class addVideoFragment extends Fragment {
             public void onClick(View view) {
 
                 saveSchedule(view);
+
                 Snackbar.make(view, "Schedule Saved", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
