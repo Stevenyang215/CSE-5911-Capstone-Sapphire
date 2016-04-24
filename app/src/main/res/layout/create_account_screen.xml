@@ -10,6 +10,7 @@
         android:textSize="35dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:textAlignment="center"
         android:textColor="@android:color/black"
         android:paddingTop="10dp"/>
 
