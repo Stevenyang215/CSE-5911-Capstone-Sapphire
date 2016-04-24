@@ -19,31 +19,36 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center">
 
-        <ImageView
-            android:layout_width="99dp"
-            android:layout_height="99dp"
-            android:id="@+id/imageView6"
-            android:maxHeight="64dp"
-            android:paddingEnd="@dimen/activity_vertical_margin"
-            android:src="@drawable/dog_icon"
-            android:paddingRight="@dimen/activity_vertical_margin"
-            android:layout_gravity="center"
-            android:layout_alignParentTop="true"
-            android:layout_toLeftOf="@+id/textView8"
-            android:layout_toStartOf="@+id/textView8" />
-
-        <TextView
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="SeeMeTrain"
-            android:id="@+id/textView8"
-            android:layout_gravity="center"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="76dp"
-            android:layout_marginEnd="76dp" />
+            android:layout_centerHorizontal="true">
+
+            <ImageView
+                android:layout_width="99dp"
+                android:layout_height="99dp"
+                android:id="@+id/imageView6"
+                android:maxHeight="64dp"
+                android:paddingEnd="@dimen/activity_vertical_margin"
+                android:src="@drawable/dog_icon"
+                android:paddingRight="@dimen/activity_vertical_margin"
+                android:layout_gravity="center"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/homeScreenTitle"
+                android:layout_toStartOf="@+id/homeScreenTitle" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="SeeMeTrain"
+                android:id="@+id/homeScreenTitle"
+                android:layout_gravity="center"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                />
+        </LinearLayout>
 
     </RelativeLayout>
 
