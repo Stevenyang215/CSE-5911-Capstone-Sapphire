@@ -70,19 +70,13 @@ public class AlarmStart extends Activity {
         if(alarm) {
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeInMillis(System.currentTimeMillis());
-            int currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-            int currentMinute = Calendar.getInstance().get(Calendar.MINUTE);
-            int interval = global.getMinute();
+            int interval = global.getInterval();
 
             //Calendar object will be used for the start time.
-            calendar.set(Calendar.HOUR_OF_DAY, currentHour);
-            calendar.set(Calendar.MINUTE, currentMinute);
             //Don't start until currentTime + interval
             calendar.add(Calendar.MINUTE, interval);
 
-            // setRepeating() lets you specify a precise custom interval
             //We will use the user defined interval
-            Context context = this.getApplicationContext();
             alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
                     1000 * 60 * interval, alarmIntent);
 
